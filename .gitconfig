@@ -1,0 +1,50 @@
+[user]
+	name = Kazuki Shimamoto
+	email = kazuki.shimamoto@studist.jp
+[core]
+	editor = vim -c \"set fenc=utf-8\"
+	excludesfile = /Users/kazuki.shimamoto/.gitignore_global
+[pull]
+	rebase = true
+[alias]
+	pu = pull
+	ps = push
+	psu = push -u origin HEAD
+	rv = revert
+	rb = rebase
+	st = status --short --branch
+	# reset
+	r = reset --soft HEAD
+	# stash
+	s = stash -u
+	sp = stash pop
+	sl = stash list
+	# add
+	a = add .
+	# fetch
+	fp = fetch --prune
+	# branch
+	b = branch
+	ba = branch --all
+	bd = branch -D
+	# diff
+	d = diff
+	ds = diff --stat
+	# commit
+	c = commit
+	cm = commit -m
+	ac = commit --amend
+	# log
+	l = log
+	ol = log --oneline
+	# switch
+	sw = switch
+	nb = switch -c
+	# restore
+	rs = restore .
+	rss = restore --staged .
+	# merge
+	m = merge
+
+[init]
+	defaultBranch = main
