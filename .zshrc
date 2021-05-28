@@ -28,6 +28,9 @@ eval "$(direnv hook zsh)"
 ## yarn global path
 export PATH="$(yarn global bin):$PATH"
 
+## go path
+export GOPATH=$HOME/go
+
 # alias
 ## global
 alias -g G="| grep"
