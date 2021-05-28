@@ -1,0 +1,39 @@
+# プロンプトの先頭に改行を表示しません
+add_newline = true
+command_timeout = 1000
+
+[character]
+error_symbol = "[✗](bold red)"
+
+[directory]
+truncation_length = 0
+truncate_to_repo = false
+
+[git_status]
+conflicted = "🏳"
+ahead = "🏎💨"
+behind = "😰"
+diverged = "😵"
+untracked = "🤷‍"
+stashed = "📦"
+modified = "📝"
+staged = '[++\($count\)](green)'
+renamed = "👅"
+deleted = "🗑"
+
+[nodejs]
+format = "via [🤖 $version](bold green) ${custom.foo}"
+
+[custom.k8s-cluster]
+command = "basename $(kubectl config current-context)"
+format = " on ⚓[$output/](bold blue)"
+when = "true"
+
+[custom.k8s-namespace]
+command = 'kubectl config view -o "jsonpath={.contexts[?(@.name==\"$(kubectl config current-context)\")].context.namespace}"'
+format = "[$output](bold yellow) "
+when = "true"
+
+[aws]
+format = "on [$symbol$profile]($style) "
+style = "bold blue"
