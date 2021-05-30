@@ -14,7 +14,6 @@ fi
 eval "$(starship init zsh)"
 
 # direnv
-export EDITOR=vim
 eval "$(direnv hook zsh)"
 
 # yarn global path
