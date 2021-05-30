@@ -30,6 +30,9 @@ export PATH="$(yarn global bin):$PATH"
 
 ## go path
 export GOPATH=$HOME/go
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
 
 # alias
 ## global
