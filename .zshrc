@@ -10,29 +10,39 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
+# Starship
 eval "$(starship init zsh)"
-export PATH="/usr/local/opt/icu4c/bin:$PATH"
-export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 
-# functions
-## utils
-clip () {
-  cat $1 | pbcopy
-}
-
-## direnv
+# direnv
 export EDITOR=vim
 eval "$(direnv hook zsh)"
 
-## yarn global path
+# yarn global path
 export PATH="$(yarn global bin):$PATH"
+export PATH="/usr/local/opt/icu4c/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 
-## go path
+# go path
 export GOPATH=$HOME/go
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
+
+# Homebrew shell Completion
+# https://docs.brew.sh/Shell-Completion
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
+# terraform completion
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/Cellar/tfenv/2.2.0/versions/0.14.4/terraform terraform
+
+## kubectl completion
+[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 
 # alias
 ## global
@@ -80,28 +90,20 @@ alias fdh="firebase deploy --only hosting"
 ## tmb
 alias tmbe="dkce teachme_web"
 
-### git func
-gcom () {
-  git add . && git status
-  echo "Type commit comment" && read comment;
-  git commit -m ${comment}
-}
-ginit () {
-  BranchName=$1
-  RemoteAddr=$2
-
-  if [ -z "$BranchName" ]; then
-    echo 'ブランチ名を入力してください'
-  fi
-
-  if [ -z "$RemoteAddr" ]; then
-    echo 'リモートアドレスを入力してください'
-  fi
-
-  echo 'ブランチ名:' $BranchName
-  echo 'リモートアドレス:' $RemoteAddr
+# functions
+## utils
+clip () {
+  cat $1 | pbcopy
 }
 
+function select_history() {
+  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+  CURSOR=$#BUFFER
+}
+zle -N select_history
+bindkey '^r' select_history
+
+## git func
 select_commit_from_git_log() {
   git log -n1000 --graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |\
     fzf -m --ansi --no-sort --reverse --tiebreak=index --preview 'f() {
@@ -127,16 +129,3 @@ bindkey "^gl" insert_selected_git_logs
 if [ -f '/Users/kazuki.shimamoto/Workspace/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kazuki.shimamoto/Workspace/google-cloud-sdk/path.zsh.inc'; fi
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/kazuki.shimamoto/Workspace/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kazuki.shimamoto/Workspace/google-cloud-sdk/completion.zsh.inc'; fi
-
-# Homebrew shell Completion
-# https://docs.brew.sh/Shell-Completion
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-
-  autoload -Uz compinit
-  compinit
-fi
-
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/Cellar/tfenv/2.2.0/versions/0.14.4/terraform terraform
-[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
