@@ -6,7 +6,7 @@ command_timeout = 1000
 error_symbol = "[✗](bold red)"
 
 [directory]
-home_symbol = "🐡~"
+home_symbol = "~"
 truncation_length = 0
 truncate_to_repo = false
 
