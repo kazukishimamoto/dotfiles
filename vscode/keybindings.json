@@ -1,8 +1,8 @@
 // Place your key bindings in this file to override the defaults
 [
   {
-  "key": "ctrl+;",
-  "command": "workbench.action.terminal.focus",
+    "key": "ctrl+;",
+    "command": "workbench.action.terminal.focus"
   },
   {
     "key": "ctrl+;",
@@ -20,7 +20,7 @@
   },
   {
     "key": "ctrl+h",
-    "command": "workbench.action.focusSideBar",
+    "command": "workbench.action.focusSideBar"
   },
   {
     "key": "ctrl+h",
