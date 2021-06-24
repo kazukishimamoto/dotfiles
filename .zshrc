@@ -73,13 +73,18 @@ alias grs='g ol | fzf-tmux | awk '\''{print $1}'\'' | xargs git reset'
 alias gch='g b | fzf --preview "git log {}" | xargs git switch'
 alias gbd='g b | fzf-tmux | xargs git branch -D'
 alias pr='gh pr list | fzf-tmux | awk '\''{print $1}'\'' | xargs gh pr view --web'
-alias prb='gh pr list | fzf-tmux | awk '\''{print $3}'\'' | xargs git switch'
+alias prb='gh pr list | fzf-tmux | awk '\''{print $1}'\'' | xargs gh pr checkout'
 
 ## kubectl
 alias kc="kubectl"
+alias kns="kubens"
+alias kctx="kubectx"
 
 ## terraform
 alias tf="terraform"
+
+## circleci
+alias ci="circleci"
 
 ## firebase
 alias f="firebase"
