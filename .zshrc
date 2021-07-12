@@ -18,6 +18,9 @@ eval "$(starship init zsh)"
 # direnv
 eval "$(direnv hook zsh)"
 
+# rbenv
+eval "$(rbenv init -)"
+
 # yarn global path
 export PATH="$(yarn global bin):$PATH"
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
