@@ -21,7 +21,7 @@
 	sl = stash list
 	# add
 	a = add
-	aa = add .
+	aa = add -A
 	ap = add -p
 	# fetch
 	fp = fetch --prune
