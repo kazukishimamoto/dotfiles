@@ -7,8 +7,10 @@ error_symbol = "[✗](bold red)"
 
 [directory]
 home_symbol = "~"
-truncation_length = 0
+truncation_length = 2
 truncate_to_repo = false
+
+[git_branch]
 
 [git_status]
 conflicted = "🏳"
@@ -24,17 +26,21 @@ deleted = "🗑"
 
 [nodejs]
 format = "via [🤖 $version](bold green) ${custom.foo}"
-
-[custom.k8s-cluster]
-command = "basename $(kubectl config current-context)"
-format = " on ☸[$output/](bold blue)"
-when = "true"
-
-[custom.k8s-namespace]
-command = 'kubectl config view -o "jsonpath={.contexts[?(@.name==\"$(kubectl config current-context)\")].context.namespace}"'
-format = "[$output](bold yellow) "
-when = "true"
+disabled = true
 
 [aws]
 format = "on [$symbol$profile]($style) "
 style = "bold blue"
+
+[gcloud]
+disabled = true
+
+[custom.k8s-cluster]
+command = "basename $(kubectl config current-context)"
+format = " on ☸[$output/](bold blue)"
+when = """ test "$K8S" = "true" """
+
+[custom.k8s-namespace]
+command = 'kubectl config view -o "jsonpath={.contexts[?(@.name==\"$(kubectl config current-context)\")].context.namespace}"'
+format = "[$output](bold yellow) "
+when = """ test "$K8S" = "true" """
