@@ -41,6 +41,9 @@ if type brew &>/dev/null; then
   compinit
 fi
 
+# heroku autocomplete setup
+HEROKU_AC_ZSH_SETUP_PATH=/Users/kazuki.shimamoto/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+
 # terraform completion
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/Cellar/tfenv/2.2.0/versions/0.14.4/terraform terraform
