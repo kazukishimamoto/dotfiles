@@ -52,6 +52,9 @@ complete -o nospace -C /usr/local/Cellar/tfenv/2.2.0/versions/0.14.4/terraform t
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 
 # alias
+## local tunnel と被るため
+unalias lt
+
 ## global
 alias -g G="| grep"
 alias -g A='| awk'
