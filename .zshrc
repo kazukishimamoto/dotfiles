@@ -32,6 +32,9 @@ export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
 
+# z setting
+. /usr/local/etc/profile.d/z.sh
+
 # Homebrew shell Completion
 # https://docs.brew.sh/Shell-Completion
 if type brew &>/dev/null; then
