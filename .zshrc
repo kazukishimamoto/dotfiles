@@ -88,11 +88,11 @@ alias g="git"
 
 ### fzf
 export FZF_DEFAULT_OPTS='--reverse --border'
-alias grs='g ol | fzf-tmux | awk '\''{print $1}'\'' | xargs git reset'
-alias gch='g b | fzf --preview "git log {}" | xargs git switch'
-alias gbd='g b | fzf-tmux | xargs git branch -D'
-alias pr='gh pr list | fzf-tmux | awk '\''{print $1}'\'' | xargs gh pr view --web'
-alias prb='gh pr list | fzf-tmux | awk '\''{print $1}'\'' | xargs gh pr checkout'
+alias grs='g ol | fzf --preview="echo {} | awk '\''{print \$1}'\'' | xargs git diff --color" | awk '\''{print $1}'\'' | xargs git reset'
+alias gch='g b | tr -d " " | fzf --preview "git show --color {}" | xargs git switch'
+alias gbd='g b | tr -d " " | fzf --preview "git show --color {}" | xargs git branch -D'
+alias pr='gh pr list | fzf | awk '\''{print $1}'\'' | xargs gh pr view --web'
+alias prb='gh pr list | fzf | awk '\''{print $1}'\'' | xargs gh pr checkout'
 
 ## kubectl
 alias kc="kubectl"
