@@ -68,6 +68,11 @@ alias -g L='| less -R'
 alias -g X='| xargs'
 alias -g F='| fzf'
 
+## utils
+alias ls="exa"
+alias ll="exa -l -g --icons"
+alias la="ll -a"
+
 ## docker
 alias dk="docker"
 alias dkv="docker volume"
