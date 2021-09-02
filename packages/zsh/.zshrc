@@ -170,3 +170,10 @@ bindkey "^gl" insert_selected_git_logs
 if [ -f '/Users/kazuki.shimamoto/Workspace/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kazuki.shimamoto/Workspace/google-cloud-sdk/path.zsh.inc'; fi
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/kazuki.shimamoto/Workspace/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kazuki.shimamoto/Workspace/google-cloud-sdk/completion.zsh.inc'; fi
+
+# コマンドの存在確認
+# type fzf >/dev/null 2>&1
+# if [[ ! $? = 0 ]]; then
+#   echo -e  "error: fzf command is not found.\n\nPlease install fzf command.\n ex) brew install fzf"
+#   exit 1
+# fi
