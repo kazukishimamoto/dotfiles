@@ -88,6 +88,22 @@ alias dkce="docker-compose exec"
 ### basic
 alias g="git"
 
+## Zenn
+# Zennのコンテンツ管理に移動
+alias zenn='cd ~/Workspace/Zenn'
+# Zennのコンテンツ管理ディレクトリに移動してVSCodeで開く & プレビュー表示
+alias zennop='zenn && code ~/Workspace/Zenn && npx zenn preview --open --port 3333'
+# 新しい記事をランダムなスラッグで作成
+alias zennna='zenn && npx zenn new:article'
+# 新しい記事をスラッグを指定して作成
+alias zennnas='zenn && npx zenn new:article --slug'
+# 新しい本をランダムなスラッグで作成
+alias zennnb='zenn && npx zenn new:book'
+# 新しい本をスラッグを指定して作成
+alias zennnbs='zenn && npx zenn new:book --slug'
+# ブラウザ上でプレビューを開く
+alias zennpr='zenn && npx zenn preview --open --port 3333'
+
 ### fzf
 export FZF_DEFAULT_OPTS='--reverse --border'
 alias grs='g ol | fzf --preview="echo {} | awk '\''{print \$1}'\'' | xargs git diff --color" | awk '\''{print $1}'\'' | xargs git reset'
