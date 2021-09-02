@@ -15,11 +15,6 @@ if [ ! -d ~/.zprezto ]; then
   for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
     ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
   done
-
-  # Delete .zshrc
-  if [ -f ~/.zshrc ]; then
-    rm -f ~/.zshrc
-  fi
 fi
 
 echo "Clone dotfiles ..."
@@ -50,8 +45,8 @@ if [ ! -d ~/.config ]; then
   mkdir ~/.config
 fi
 
-# vscodeの設定を先に削除する
-for file in settings.json keybindings.json
+# シンボリックリンクを作成するファイルは事前に削除する必要がある
+for file in settings.json keybindings.json ~/.zshrc ~/.gitconfig
 do
   rm -rf "${VSCODE_SETTING_DIR}/${file}"
 done
