@@ -1,6 +1,6 @@
 [user]
 	name = Kazuki Shimamoto
-	email = kazuki.shimamoto@studist.jp
+	email = jakky0529@gmail.com
 [core]
 	editor = vim -c \"set fenc=utf-8\"
 	excludesfile = /Users/kazuki.shimamoto/.gitignore_global
