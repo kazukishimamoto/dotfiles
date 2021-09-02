@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+set -e
+
 VSCODE_SETTING_DIR=~/Library/Application\ Support/Code/User
 
 echo "start setup ..."
@@ -46,9 +48,14 @@ if [ ! -d ~/.config ]; then
 fi
 
 # シンボリックリンクを作成するファイルは事前に削除する必要がある
-for file in settings.json keybindings.json ~/.zshrc ~/.gitconfig
-do
+## remove vscode settings
+for file in settings.json keybindings.json; do
   rm -rf "${VSCODE_SETTING_DIR}/${file}"
+done
+
+## remove dotfiles
+for file in ~/.zshrc ~/.gitconfig; do
+  rm -rf "${file}"
 done
 
 # シンボリックリンクを作成する
