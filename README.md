@@ -9,7 +9,6 @@ curl -o - https://raw.githubusercontent.com/kazukishimamoto/dotfiles/main/instal
 ## ファイル構成
 
 ```bash
-❯ tree
 .
 ├── Brewfile
 ├── Brewfile.lock.json
@@ -18,12 +17,16 @@ curl -o - https://raw.githubusercontent.com/kazukishimamoto/dotfiles/main/instal
 ├── install
 └── packages
     ├── git
+    │   ├── .gitconfig
+    │   └── .gitignore_global
     ├── starship
+    │   └── .config
+    │       └── starship.toml
     ├── tmux
+    │   └── .tmux.conf
     ├── vscode
-    │   ├── keybindings.json
-    │   └── settings.json
+    │   ├── keybindings.json
+    │   └── settings.json
     └── zsh
-
-6 directories, 7 files
+        └── .zshrc
 ```
