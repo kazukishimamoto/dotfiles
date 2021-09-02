@@ -11,7 +11,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 export EDITOR=vim
-
 # Bin path
 export PATH="$HOME/Workspace/bin:$PATH"
 

@@ -2,7 +2,6 @@
 
 set -e
 
-THIS_DIR=$(cd $(dirname $0); pwd)
 VSCODE_SETTING_DIR=~/Library/Application\ Support/Code/User
 
 echo "start setup ..."
@@ -53,16 +52,18 @@ if [ ! -d ~/.config ]; then
   mkdir ~/.config
 fi
 
+# vscodeの設定を先に削除する
+for file in settings.json keybindings.json
+do
+  rm -rf "${VSCODE_SETTING_DIR}/${file}"
+done
+
 # シンボリックリンクを作成する
-stow -v -d ~/dotfiles/packages -t ~ zsh starship tmux git
 stow -v -d ~/dotfiles/packages -t "${VSCODE_SETTING_DIR}" vscode
-
-touch ~/.zshrc
-
-cd $THIS_DIR
+stow -v -d ~/dotfiles/packages -t ~ zsh starship tmux git
 
 # install extention
-cat extensions | while read line
+cat ~/dotfiles/extensions | while read line
 do
   code --install-extension $line
 done
