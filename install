@@ -1,0 +1,50 @@
+#!/bin/zsh
+
+set -e
+
+VSCODE_SETTING_DIR=~/Library/Application\ Support/Code/User
+
+# Install prezto
+if [ ! -d ~/.zprezto ]; then
+  git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+
+  setopt EXTENDED_GLOB
+
+  # Link prezto
+  for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+    ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+  done
+
+  # Delete .zshrc
+  if [ -f ~/.zshrc ]; then
+    rm -f ~/.zshrc
+  fi
+fi
+
+# Clone dotfiles
+if [ ! -d ~/dotfiles ]; then
+  cd ~
+  git clone git@github.com:kazukishimamoto/dotfiles.git
+fi
+
+# Install brew
+if [ ! -f /usr/local/bin/brew ]; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+# Install Command for Brewfile
+brew bundle -v --file=~/dotfiles/Brewfile
+
+if [ ! -d ~/.config ]; then
+  mkdir ~/.config
+fi
+
+# シンボリックリンクを作成する
+stow -v -d ~/dotfiles/packages -t ~ zsh starship tmux git
+stow -v -d ~/dotfiles/packages -t "${VSCODE_SETTING_DIR}" vscode
+
+# install extention
+# cat extensions | while read line
+# do
+#   code --install-extension $line
+# done

@@ -23,7 +23,7 @@
     },
     "[markdown]": {
         "editor.formatOnSave": false
-    },
+    }
     // // ターミナルのカラー設定
     // "workbench.colorCustomizations": {
     //     "terminal.background":"#191919",
