@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-set -e
-
 VSCODE_SETTING_DIR=~/Library/Application\ Support/Code/User
 
 echo "start setup ..."
