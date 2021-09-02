@@ -12,6 +12,9 @@ fi
 
 export EDITOR=vim
 
+# Bin path
+export PATH="$HOME/Workspace/bin:$PATH"
+
 # Starship
 eval "$(starship init zsh)"
 
