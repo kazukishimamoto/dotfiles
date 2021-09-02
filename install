@@ -2,9 +2,13 @@
 
 set -e
 
+THIS_DIR=$(cd $(dirname $0); pwd)
 VSCODE_SETTING_DIR=~/Library/Application\ Support/Code/User
 
-# Install prezto
+echo "start setup ..."
+cd $HOME
+
+echo "Install prezto ..."
 if [ ! -d ~/.zprezto ]; then
   git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
@@ -21,19 +25,29 @@ if [ ! -d ~/.zprezto ]; then
   fi
 fi
 
-# Clone dotfiles
+echo "Clone dotfiles ..."
 if [ ! -d ~/dotfiles ]; then
-  cd ~
   git clone git@github.com:kazukishimamoto/dotfiles.git
 fi
 
-# Install brew
+echo "Install Homebrew ..."
 if [ ! -f /usr/local/bin/brew ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# Install Command for Brewfile
+echo "Run brew doctor ..."
+which brew >/dev/null 2>&1 && brew doctor
+
+echo "Run brew update ..."
+brew update
+
+echo "Ok. run brew upgrade ..."
+brew upgrade
+
+echo "Install Command for Brewfile ..."
 brew bundle -v --file=~/dotfiles/Brewfile
+
+brew cleanup
 
 if [ ! -d ~/.config ]; then
   mkdir ~/.config
@@ -43,8 +57,12 @@ fi
 stow -v -d ~/dotfiles/packages -t ~ zsh starship tmux git
 stow -v -d ~/dotfiles/packages -t "${VSCODE_SETTING_DIR}" vscode
 
+touch ~/.zshrc
+
+cd $THIS_DIR
+
 # install extention
-# cat extensions | while read line
-# do
-#   code --install-extension $line
-# done
+cat extensions | while read line
+do
+  code --install-extension $line
+done
