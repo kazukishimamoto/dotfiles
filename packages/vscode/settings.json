@@ -15,7 +15,7 @@
     "eslint.alwaysShowStatus": true,
     "eslint.debug": true,
     "terminal.integrated.copyOnSelection": true,
-    "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
+    "terminal.integrated.fontFamily": "Hack Nerd Font",
     "terminal.integrated.rendererType": "dom",
     "workbench.colorTheme": "GitHub Dark",
     "workbench.editorAssociations": {

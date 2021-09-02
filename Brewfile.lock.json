@@ -17,10 +17,13 @@
         "revision": "244bfa18b23948404fc2ee4253eb232053034212"
       },
       "homebrew/cask": {
-        "revision": "b8ff2c93077489764a71a69cfb6ea6eb67ab6dcd"
+        "revision": "8b9a082e5752cac7dc4266c62f1101a587308c65"
       },
       "homebrew/core": {
-        "revision": "28d29c91462f71da24a224caa2b190f1cd7c2582"
+        "revision": "650fa7bd7efc5cba2c8dbd2342f3470836b3372b"
+      },
+      "homebrew/cask-fonts": {
+        "revision": "df50291c7c200fed9ba41a43dac5a2e287b2dd07"
       }
     },
     "brew": {
@@ -1441,6 +1444,28 @@
             }
           }
         }
+      },
+      "yarn": {
+        "version": "1.22.11",
+        "bottle": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "all": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/yarn/blobs/sha256:27d2f4cae93bd17d2038871f7ac6bc8b04d181ebcebd9f976e1701a3def55c8d",
+              "sha256": "27d2f4cae93bd17d2038871f7ac6bc8b04d181ebcebd9f976e1701a3def55c8d"
+            }
+          }
+        }
+      }
+    },
+    "cask": {
+      "font-hack-nerd-font": {
+        "version": "2.1.0",
+        "options": {
+          "full_name": "font-hack-nerd-font"
+        }
       }
     }
   },
@@ -1449,10 +1474,10 @@
       "big_sur": {
         "HOMEBREW_VERSION": "3.2.10",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "28d29c91462f71da24a224caa2b190f1cd7c2582",
-        "CLT": "12.5.0.22.9",
-        "Xcode": "12.5.1",
-        "macOS": "11.3"
+        "Homebrew/homebrew-core": "650fa7bd7efc5cba2c8dbd2342f3470836b3372b",
+        "CLT": "12.5.0.0.1.1617976050",
+        "Xcode": "12.5",
+        "macOS": "11.5"
       }
     }
   }
