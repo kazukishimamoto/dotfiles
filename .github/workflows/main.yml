@@ -26,4 +26,6 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a install script
-        run: ./installs
+        run: |
+          ls
+          /bin/zsh -c ./installs
