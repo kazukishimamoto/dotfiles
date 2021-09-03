@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 set -e
 
@@ -14,7 +14,7 @@ if [ ! -d ~/.zprezto ]; then
   setopt EXTENDED_GLOB
 
   # Link prezto
-  for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+  for rcfile in $(ls -1 "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/ | grep -v README); do
     ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
   done
 fi
