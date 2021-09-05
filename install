@@ -4,7 +4,7 @@ set -e
 
 VSCODE_SETTING_DIR=~/Library/Application\ Support/Code/User
 
-echo "start setup ..."
+echo "Start setup ..."
 cd $HOME
 
 echo "Install prezto ..."
