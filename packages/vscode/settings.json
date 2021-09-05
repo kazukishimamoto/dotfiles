@@ -17,14 +17,18 @@
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.fontFamily": "Hack Nerd Font",
     "terminal.integrated.rendererType": "dom",
-    "workbench.colorTheme": "GitHub Dark",
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter.notebook.ipynb"
     },
     "[markdown]": {
         "editor.formatOnSave": false
-    }
-    // // ターミナルのカラー設定
+    },
+    "workbench.colorTheme": "Bearded Theme Stained Blue",
+    "cSpell.userWords": [
+        "ipynb",
+        "vsintellicode"
+    ]
+    // ターミナルのカラー設定
     // "workbench.colorCustomizations": {
     //     "terminal.background":"#191919",
     //     "terminal.foreground":"#A7A7A7",
