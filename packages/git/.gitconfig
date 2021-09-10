@@ -7,7 +7,7 @@
 [pull]
 	rebase = true
 [alias]
-	pu = pull
+	pl = pull
 	ps = push
 	psu = push -u origin HEAD
 	rv = revert

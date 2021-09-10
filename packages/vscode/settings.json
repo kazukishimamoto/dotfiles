@@ -23,7 +23,7 @@
     "[markdown]": {
         "editor.formatOnSave": false
     },
-    "workbench.colorTheme": "Bearded Theme Stained Blue",
+    "workbench.colorTheme": "GitHub Dark Dimmed",
     "cSpell.userWords": [
         "ipynb",
         "vsintellicode"
