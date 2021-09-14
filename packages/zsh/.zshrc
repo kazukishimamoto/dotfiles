@@ -73,8 +73,10 @@ alias -g F='| fzf'
 
 ## utils
 alias ls="exa"
-alias ll="exa -l -g --icons"
+alias ll="ls -l -g --icons"
 alias la="ll -a"
+alias cat="bat"
+
 
 ## docker
 alias dk="docker"
