@@ -36,7 +36,8 @@
 	# commit
 	c = commit
 	cm = commit -m
-	ac = commit --amend
+	# ca = commit --amend
+	ca = commit -am
 	# log
 	l = log
 	ol = log --oneline
@@ -48,6 +49,9 @@
 	rss = restore --staged .
 	# merge
 	m = merge
+	# grep
+	g = grep
+	gu = grep --untracked
 
 [init]
 	defaultBranch = main
