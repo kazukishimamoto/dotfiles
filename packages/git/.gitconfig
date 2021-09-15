@@ -50,8 +50,8 @@
 	# merge
 	m = merge
 	# grep
-	g = grep
-	gu = grep --untracked
+	g = --line-number grep
+	gu = grep --untracked --line-number
 
 [init]
 	defaultBranch = main
