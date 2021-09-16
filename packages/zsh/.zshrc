@@ -77,7 +77,6 @@ alias ll="ls -l -g --icons"
 alias la="ll -a"
 alias cat="bat"
 
-
 ## docker
 alias dk="docker"
 alias dkv="docker volume"
@@ -90,6 +89,7 @@ alias dkce="docker-compose exec"
 ## git
 ### basic
 alias g="git"
+alias gtop="cd `git rev-parse --show-toplevel`"
 
 ## Zenn
 # Zennのコンテンツ管理に移動
