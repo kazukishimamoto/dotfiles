@@ -140,6 +140,10 @@ clip () {
   cat $1 | pbcopy
 }
 
+cn () {
+  (z $1 && code -n .)
+}
+
 function select_history() {
   BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
   CURSOR=$#BUFFER
