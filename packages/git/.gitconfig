@@ -16,7 +16,8 @@
 	# reset
 	r = reset --soft HEAD
 	# stash
-	s = stash -u
+	s = stash
+	su = stash -u
 	sp = stash pop
 	sl = stash list
 	# add
@@ -45,8 +46,10 @@
 	sw = switch
 	nb = switch -c
 	# restore
-	rs = restore .
-	rss = restore --staged .
+	rs = restore
+	rsa = restore .
+	rss = restore --staged
+	rssa = restore --staged .
 	# merge
 	m = merge
 	# grep
