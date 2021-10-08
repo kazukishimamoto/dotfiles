@@ -1,24 +1,6 @@
 // Place your key bindings in this file to override the defaults
 [
-  {
-    "key": "ctrl+;",
-    "command": "workbench.action.terminal.focus"
-  },
-  {
-    "key": "ctrl+;",
-    "command": "workbench.action.focusAboveGroup",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "cmd+w",
-    "command": "workbench.action.terminal.kill",
-    "when": "terminalFocus && terminalProcessSupported"
-  },
-  {
-    "key": "cmd+;",
-    "command": "workbench.action.toggleMaximizedPanel"
-  },
-  // # tmux + emacs風　 window移動
+    // # tmux + emacs風　 window移動
   // ## window移動
   // ### 次のEditorに移動
   {
@@ -56,5 +38,40 @@
     "key": "ctrl+t h",
     "command": "workbench.action.moveEditorToLeftGroup",
     "when": "editorTextFocus"
-  }
+  },
+  {
+    "key": "ctrl+;",
+    "command": "workbench.action.terminal.focus"
+  },
+  {
+    "key": "ctrl+;",
+    "command": "workbench.action.focusAboveGroup",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+w",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "cmd+;",
+    "command": "workbench.action.toggleMaximizedPanel"
+  },
+  {
+    "key": "ctrl+q",
+    "command": "-workbench.action.quickOpenView"
+  },
+  {
+    "key": "ctrl+q",
+    "command": "workbench.action.quickOpenView",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+s ctrl+s",
+    "command": "editor.action.insertSnippet"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "workbench.action.nextPanelView"
+  },
 ]
