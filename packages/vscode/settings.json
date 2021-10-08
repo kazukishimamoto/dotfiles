@@ -5,10 +5,11 @@
     "editor.quickSuggestionsDelay": 1,
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.bracketPairColorization.enabled": true,
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "editor.suggest.preview": true,
+    "window.newWindowDimensions": "maximized",
+    "workbench.colorTheme": "GitHub Dark Dimmed",
     "workbench.iconTheme": "material-icon-theme",
-    "workbench.editor.enablePreview": false,
-    "window.zoomLevel": 0,
+    "workbench.editor.enablePreview": true,
     "git.ignoreMissingGitWarning": true,
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
@@ -17,18 +18,23 @@
     "eslint.debug": true,
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.fontFamily": "Hack Nerd Font",
-    "terminal.integrated.rendererType": "dom",
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter.notebook.ipynb"
     },
-    "[markdown]": {
-        "editor.formatOnSave": false
-    },
-    "workbench.colorTheme": "GitHub Dark Dimmed",
+
     "cSpell.userWords": [
         "ipynb",
         "vsintellicode"
-    ]
+    ],
+
+    "[markdown]": {
+        "editor.formatOnSave": true,
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+        }
+    },
     // ターミナルのカラー設定
     // "workbench.colorCustomizations": {
     //     "terminal.background":"#191919",
