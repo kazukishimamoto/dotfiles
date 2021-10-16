@@ -132,7 +132,8 @@ alias fd="firebase deploy"
 alias fdh="firebase deploy --only hosting"
 
 ## tmb
-alias tmbe="dkce teachme_web"
+alias tmb="dkce teachme_web"
+dct() { docker-compose $1 teachme_web "${@:2}" }
 
 # functions
 ## utils
