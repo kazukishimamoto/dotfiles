@@ -21,7 +21,7 @@
 	sp = stash pop
 	sl = stash list
 	# add
-	a = add
+	a = "!git diff --name-only | fzf --preview 'git diff --color {}' | xargs git add"
 	aa = add -A
 	ap = add -p
 	# fetch
@@ -29,7 +29,7 @@
 	# branch
 	b = branch
 	ba = branch --all
-	bd = branch -D
+	bd = "!git branch | tr -d ' ' | fzf --preview 'git show --color {}' | xargs git branch -D"
 	# diff
 	d = diff
 	# ds = diff --stat
@@ -45,6 +45,7 @@
 	# switch
 	sw = switch
 	nb = switch -c
+	ch = "!git branch | tr -d ' ' | fzf --preview 'git show --color {}' | xargs git switch"
 	# restore
 	rs = restore
 	rsa = restore .

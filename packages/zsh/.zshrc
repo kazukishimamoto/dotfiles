@@ -110,8 +110,6 @@ alias zennpr='zenn && npx zenn preview --open --port 3333'
 ### fzf
 export FZF_DEFAULT_OPTS='--reverse --border'
 alias grs='g ol | fzf --preview="echo {} | awk '\''{print \$1}'\'' | xargs git diff --color" | awk '\''{print $1}'\'' | xargs git reset'
-alias gch='g b | tr -d " " | fzf --preview "git show --color {}" | xargs git switch'
-alias gbd='g b | tr -d " " | fzf --preview "git show --color {}" | xargs git branch -D'
 alias pr='gh pr list | fzf | awk '\''{print $1}'\'' | xargs gh pr view --web'
 alias prb='gh pr list | fzf | awk '\''{print $1}'\'' | xargs gh pr checkout'
 
