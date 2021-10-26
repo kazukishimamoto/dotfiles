@@ -14,15 +14,6 @@ export EDITOR=code
 # Bin path
 export PATH="$HOME/Workspace/bin:$PATH"
 
-# Starship
-eval "$(starship init zsh)"
-
-# direnv
-eval "$(direnv hook zsh)"
-
-# rbenv
-eval "$(rbenv init -)"
-
 # yarn global path
 export PATH="$(yarn global bin):$PATH"
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
@@ -34,9 +25,14 @@ export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
 
+# Starship
+eval "$(starship init zsh)"
+# direnv
+eval "$(direnv hook zsh)"
+# rbenv
+eval "$(rbenv init -)"
 # z setting
 source /usr/local/etc/profile.d/z.sh # (≒. /usr/local/etc/profile.d/z.sh)
-
 
 # Homebrew shell Completion
 # https://docs.brew.sh/Shell-Completion
@@ -58,9 +54,6 @@ complete -o nospace -C /usr/local/Cellar/tfenv/2.2.0/versions/0.14.4/terraform t
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 
 # alias
-## local tunnel と被るため
-unalias lt
-
 ## global
 alias -g G="| grep"
 alias -g A='| awk'
@@ -76,6 +69,9 @@ alias ls="exa"
 alias ll="ls -l -g --icons"
 alias la="ll -a"
 alias cat="bat"
+alias google="s -p google"
+alias zshr="source ~/.zshrc"
+alias zshconf="vim ~/.zshrc"
 
 ## docker
 alias dk="docker"
