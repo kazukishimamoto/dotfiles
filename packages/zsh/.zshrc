@@ -91,6 +91,11 @@ alias dkce="docker-compose exec"
 alias g="git"
 alias gtop="cd `git rev-parse --show-toplevel`"
 
+## nvim
+alias vi="nvim"
+alias vim="nvim"
+alias view="nvim -R"
+
 ## Zenn
 # Zennのコンテンツ管理に移動
 alias zenn='cd ~/Workspace/Zenn'
