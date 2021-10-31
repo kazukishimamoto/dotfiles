@@ -35,6 +35,7 @@
             "strings": true
         }
     },
+    "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
     // ターミナルのカラー設定
     // "workbench.colorCustomizations": {
     //     "terminal.background":"#191919",
