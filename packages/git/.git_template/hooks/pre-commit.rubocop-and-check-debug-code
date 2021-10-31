@@ -8,23 +8,23 @@ all_files=`git diff --staged --name-only HEAD`
 result=`echo $all_files | xargs git diff --staged -U0 HEAD -- | grep -e 'binding.pry' -e 'console.log'`
 if [ -n "${result}" ]; then
   echo $result
-  echo -e "\033[1;95m Please remove unnecessary code before commiting OR use --no-verify \033[00m\n"
+  echo -e "$FG[5]Please remove unnecessary code before commiting OR use --no-verify"
   exit 1
 fi
 
 ## rubocop
 target_files=`git diff --staged --name-only --diff-filter=AM | grep '.rb$' | tr '\n' ' '`
 if [ -n "${target_files}" ]; then
-  echo -e "\033[31m Targets of rubocop exist \033[m"
+  echo -e "$FG[1]Targets of rubocop exist"
   # xargs excutes command on new child process.
   # So you need to reopen stdin to child process for interactive communication. (MacOS: -o option)
   echo $target_files | xargs -o docker-compose exec teachme_web rubocop -a
   if [ $? -ne 0 ]; then
-    echo -e "\033[1;95m Please follow rubocop before commiting OR use --no-verify \033[00m\n"
+    echo -e "$FG[5]Please follow rubocop before commiting OR use --no-verify"
     exit 1
   fi
 fi
 
-echo -e "\033[1;95m All check clear!! \033[00m\n"
+echo -e "$FG[2]All check clear!!"
 
 exit $?
