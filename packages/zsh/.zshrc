@@ -10,21 +10,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-export EDITOR=code
-# Bin path
-export PATH="$HOME/Workspace/bin:$PATH"
-
-# yarn global path
-export PATH="$(yarn global bin):$PATH"
-export PATH="/usr/local/opt/icu4c/bin:$PATH"
-export PATH="/usr/local/opt/icu4c/sbin:$PATH"
-
-# go path
-export GOPATH=$HOME/go
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
-
 # Starship
 eval "$(starship init zsh)"
 # direnv
@@ -33,25 +19,6 @@ eval "$(direnv hook zsh)"
 eval "$(rbenv init -)"
 # z setting
 source /usr/local/etc/profile.d/z.sh # (≒. /usr/local/etc/profile.d/z.sh)
-
-# Homebrew shell Completion
-# https://docs.brew.sh/Shell-Completion
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-
-  autoload -Uz compinit
-  compinit
-fi
-
-# heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=/Users/kazuki.shimamoto/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
-
-# terraform completion
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/Cellar/tfenv/2.2.0/versions/0.14.4/terraform terraform
-
-## kubectl completion
-[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 
 # alias
 ## global
@@ -69,6 +36,9 @@ alias ls="exa"
 alias ll="ls -l -g --icons"
 alias la="ll -a"
 alias cat="bat"
+alias vi="nvim"
+alias vim="nvim"
+alias view="nvim -R"
 alias google="s -p google"
 alias zshr="source ~/.zshrc"
 alias zshconf="vim ~/.zshrc"
@@ -86,11 +56,6 @@ alias dkce="docker-compose exec"
 ### basic
 alias g="git"
 alias gtop="cd `git rev-parse --show-toplevel`"
-
-## nvim
-alias vi="nvim"
-alias vim="nvim"
-alias view="nvim -R"
 
 ## Zenn
 # Zennのコンテンツ管理に移動
@@ -200,3 +165,22 @@ if [ -f '/Users/kazuki.shimamoto/Workspace/google-cloud-sdk/completion.zsh.inc' 
 #   echo -e  "error: fzf command is not found.\n\nPlease install fzf command.\n ex) brew install fzf"
 #   exit 1
 # fi
+
+# Homebrew shell Completion
+# https://docs.brew.sh/Shell-Completion
+# if type brew &>/dev/null; then
+#   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+#   autoload -Uz compinit
+#   compinit
+# fi
+
+# heroku autocomplete setup
+# HEROKU_AC_ZSH_SETUP_PATH=/Users/kazuki.shimamoto/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+
+# terraform completion
+# autoload -U +X bashcompinit && bashcompinit
+# complete -o nospace -C /usr/local/Cellar/tfenv/2.2.0/versions/0.14.4/terraform terraform
+
+## kubectl completion
+# [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
