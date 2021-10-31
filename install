@@ -55,7 +55,7 @@ done
 
 # シンボリックリンクを作成する
 stow -v -d ~/dotfiles/packages -t "${VSCODE_SETTING_DIR}" vscode
-stow -v -d ~/dotfiles/packages -t ~ zsh starship tmux git
+stow -v -d ~/dotfiles/packages -t ~ zsh starship tmux git prezto
 
 # install extention
 cat ~/dotfiles/extensions | while read line
