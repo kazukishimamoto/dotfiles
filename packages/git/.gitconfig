@@ -37,6 +37,8 @@
 	b = branch
 	ba = branch --all
 	bd = "!git branch | tr -d ' ' | fzf --preview 'git show --color {}' | xargs git branch -D"
+	# merge済みでmainブランチ以外のブランチを削除する
+	vacuum = "!f () { git checkout $1; git branch --merged|egrep -v '\\*|main'|xargs git branch -d; git fetch --prune; };f"
 	# diff
 	d = diff
 	# ds = diff --stat
@@ -63,7 +65,6 @@
 	# grep
 	g = --line-number grep
 	gu = grep --untracked --line-number
-
 [init]
 	defaultBranch = main
 	templatedir = ~/.git_template
