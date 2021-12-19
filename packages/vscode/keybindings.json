@@ -1,41 +1,41 @@
 // Place your key bindings in this file to override the defaults
 [
-    // # tmux + emacs風　 window移動
+  // # tmux + emacs風　 window移動
   // ## window移動
   // ### 次のEditorに移動
   {
-    "key": "ctrl+t f",
+    "key": "ctrl+g f",
     "command": "workbench.action.nextEditor",
     "when": "editorTextFocus"
   },
   // ### 前のEditorに移動
   {
-    "key": "ctrl+t b",
+    "key": "ctrl+g b",
     "command": "workbench.action.previousEditor",
     "when": "editorTextFocus"
   },
   // ### 次のEditorGroupへ移動
   {
-    "key": "ctrl+t n",
+    "key": "ctrl+g n",
     "command": "workbench.action.focusNextGroup",
     "when": "editorTextFocus"
   },
   // ### 前のEditorGroupへ移動
   {
-    "key": "ctrl+t p",
+    "key": "ctrl+g p",
     "command": "workbench.action.focusPreviousGroup",
     "when": "editorTextFocus"
   },
   // ## window分割
   // ### 現在のEditorを右のEditorGroupに移動
   {
-    "key": "ctrl+t l",
+    "key": "ctrl+g l",
     "command": "workbench.action.moveEditorToRightGroup",
     "when": "editorTextFocus"
   },
   // ### 現在のEditorを左のEditorGroupに移動
   {
-    "key": "ctrl+t h",
+    "key": "ctrl+g h",
     "command": "workbench.action.moveEditorToLeftGroup",
     "when": "editorTextFocus"
   },
@@ -45,7 +45,7 @@
   },
   {
     "key": "ctrl+;",
-    "command": "workbench.action.focusAboveGroup",
+    "command": "workbench.action.focusActiveEditorGroup",
     "when": "terminalFocus"
   },
   {
@@ -73,5 +73,14 @@
   {
     "key": "ctrl+`",
     "command": "workbench.action.nextPanelView"
+  },
+  {
+    "key": "ctrl+x ctrl+f",
+    "command": "editor.action.formatDocument",
+    "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor && neovim.mode != 'insert'"
+  },
+  {
+    "key": "ctrl+x ctrl+s",
+    "command": "workbench.action.files.save"
   },
 ]
