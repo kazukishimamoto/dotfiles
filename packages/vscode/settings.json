@@ -7,7 +7,7 @@
     "editor.bracketPairColorization.enabled": true,
     "editor.suggest.preview": true,
     "window.newWindowDimensions": "maximized",
-    "workbench.colorTheme": "GitHub Dark Dimmed",
+    "workbench.colorTheme": "GitHub Dark",
     "workbench.iconTheme": "material-icon-theme",
     "workbench.editor.enablePreview": true,
     "git.ignoreMissingGitWarning": true,
@@ -36,27 +36,18 @@
         }
     },
     "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-    // ターミナルのカラー設定
-    // "workbench.colorCustomizations": {
-    //     "terminal.background":"#191919",
-    //     "terminal.foreground":"#A7A7A7",
-    //     "terminalCursor.background":"#A7A7A7",
-    //     "terminalCursor.foreground":"#A7A7A7",
-    //     "terminal.ansiBlack":"#191919",
-    //     "terminal.ansiBlue":"#639EE4",
-    //     "terminal.ansiBrightBlack":"#5F5A60",
-    //     "terminal.ansiBrightBlue":"#639EE4",
-    //     "terminal.ansiBrightCyan":"#4BB1A7",
-    //     "terminal.ansiBrightGreen":"#84B97C",
-    //     "terminal.ansiBrightMagenta":"#B888E2",
-    //     "terminal.ansiBrightRed":"#DC657D",
-    //     "terminal.ansiBrightWhite":"#FFFFFF",
-    //     "terminal.ansiBrightYellow":"#C3BA63",
-    //     "terminal.ansiCyan":"#4BB1A7",
-    //     "terminal.ansiGreen":"#84B97C",
-    //     "terminal.ansiMagenta":"#B888E2",
-    //     "terminal.ansiRed":"#DC657D",
-    //     "terminal.ansiWhite":"#A7A7A7",
-    //     "terminal.ansiYellow":"#C3BA63"
-    // }
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
+    },
+    "prettier.semi": false,
+    "prettier.trailingComma": "all",
+    "prettier.singleQuote": true,
+    "editor.minimap.enabled": false,
+    "editor.guides.bracketPairs": true,
+    // 現在の行を強調表示する
+    "editor.renderLineHighlight": "all",
 }
