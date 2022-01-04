@@ -10,9 +10,12 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-eval "$(goenv init -)"
 # Starship
 eval "$(starship init zsh)"
+# nodenv
+eval "$(nodenv init -)"
+# goenv
+eval "$(goenv init -)"
 # direnv
 eval "$(direnv hook zsh)"
 # rbenv
