@@ -41,6 +41,7 @@
 	vacuum = "!f () { git checkout $1; git branch --merged|egrep -v '\\*|main'|xargs git branch -d; git fetch --prune; };f"
 	# diff
 	d = diff
+	db = "!git diff --name-only --diff-filter=d | xargs bat --diff"
 	# ds = diff --stat
 	ds = diff --staged
 	# commit
