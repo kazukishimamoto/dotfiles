@@ -1,4 +1,17 @@
+# direnv
 .envrc
+
+# nodenv
 .node-version
+
+# ruby
+.ruby-version
+
+# docker-compose
+docker-compose.override.yml
+*.tmb
+
 *.log
+logfile
+
 *.http
