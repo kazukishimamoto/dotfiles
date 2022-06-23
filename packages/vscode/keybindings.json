@@ -33,10 +33,15 @@
     "command": "workbench.action.moveEditorToRightGroup",
     "when": "editorTextFocus"
   },
-  // ### 現在のEditorを左のEditorGroupに移動
+   // ### 現在のEditorを左のEditorGroupに移動
   {
     "key": "ctrl+g h",
     "command": "workbench.action.moveEditorToLeftGroup",
+    "when": "editorTextFocus"
+  }, // ### 現在のファイルの相対パスをコピー
+  {
+    "key": "ctrl+g c",
+    "command": "copyRelativeFilePath",
     "when": "editorTextFocus"
   },
   {
@@ -83,4 +88,9 @@
     "key": "ctrl+x ctrl+s",
     "command": "workbench.action.files.save"
   },
+  {
+    "command": "extension.runLineOnRspec",
+    "key": "cmd+l",
+    "when": "editorLangId == 'ruby'"
+  }
 ]
