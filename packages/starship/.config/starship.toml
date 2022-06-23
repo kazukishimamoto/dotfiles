@@ -26,7 +26,6 @@ deleted = "🗑"
 
 [nodejs]
 format = "via [🤖 $version](bold green) ${custom.foo}"
-disabled = true
 
 [aws]
 format = "on [$symbol$profile]($style) "
