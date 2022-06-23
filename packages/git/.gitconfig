@@ -22,6 +22,9 @@
 	st = status --short --branch
 	# reset
 	r = reset --soft HEAD
+	# rs= "!git ol | fzf --preview='echo {} | awk '\''{print \$1}'\'' | xargs git diff --color' | awk '\''{print $1}'\'' | xargs git reset"
+	rs = "!git ol | fzf | awk '{print $1}' | xargs git reset"
+
 	# stash
 	s = stash
 	su = stash -u
@@ -57,15 +60,18 @@
 	nb = switch -c
 	ch = "!git branch | tr -d ' ' | fzf --preview 'git show --color {}' | xargs git switch"
 	# restore
-	rs = restore
+	discard = restore --patch
+	# discard all = restore .
+	unstaged = restore --staged --patch
 	rsa = restore .
-	rss = restore --staged
-	rssa = restore --staged .
+	usa = restore --staged .
 	# merge
 	m = merge
 	# grep
 	g = --line-number grep
 	gu = grep --untracked --line-number
+  # top(最上位ディレクトリに移動する)がほしい
+	top = "!git branch"
 [init]
 	defaultBranch = main
 	templatedir = ~/.git_template
