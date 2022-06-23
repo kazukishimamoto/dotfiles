@@ -1,53 +1,71 @@
 {
-    "editor.tabSize": 2,
-    "editor.suggestSelection": "first",
-    "editor.rename.enablePreview": false,
-    "editor.quickSuggestionsDelay": 1,
-    "diffEditor.ignoreTrimWhitespace": false,
-    "editor.bracketPairColorization.enabled": true,
-    "editor.suggest.preview": true,
-    "window.newWindowDimensions": "maximized",
-    "workbench.colorTheme": "GitHub Dark",
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.editor.enablePreview": true,
-    "git.ignoreMissingGitWarning": true,
-    "files.insertFinalNewline": true,
-    "files.trimTrailingWhitespace": true,
-    "files.trimFinalNewlines": true,
-    "eslint.alwaysShowStatus": true,
-    "eslint.debug": true,
-    "terminal.integrated.copyOnSelection": true,
-    "terminal.integrated.fontFamily": "Hack Nerd Font",
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
-    },
+  "editor.tabSize": 2,
+  "editor.suggestSelection": "first",
+  "editor.rename.enablePreview": false,
+  "editor.quickSuggestionsDelay": 1,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.suggest.preview": true,
+  "window.newWindowDimensions": "maximized",
+  "workbench.colorTheme": "GitHub Dark",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.editor.enablePreview": true,
+  "git.ignoreMissingGitWarning": true,
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "files.trimFinalNewlines": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint.debug": true,
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.fontFamily": "Hack Nerd Font",
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
 
-    "cSpell.userWords": [
-        "ipynb",
-        "vsintellicode"
-    ],
+  "cSpell.userWords": ["ipynb", "vsintellicode"],
 
-    "[markdown]": {
-        "editor.formatOnSave": true,
-        "editor.quickSuggestions": {
-            "other": true,
-            "comments": false,
-            "strings": true
-        }
-    },
-    "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true
-    },
-    "prettier.semi": false,
-    "prettier.trailingComma": "all",
-    "prettier.singleQuote": true,
-    "editor.minimap.enabled": false,
-    "editor.guides.bracketPairs": true,
-    // 現在の行を強調表示する
-    "editor.renderLineHighlight": "all",
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    }
+  },
+  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "prettier.semi": false,
+  "prettier.trailingComma": "all",
+  "prettier.singleQuote": true,
+  "editor.minimap.enabled": false,
+  "editor.inlineSuggest.enabled": true,
+  "prettier.withNodeModules": true,
+  "editor.guides.bracketPairs": true,
+  // 現在の行を強調表示する
+  "editor.renderLineHighlight": "all",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[ruby]": {
+    "editor.defaultFormatter": "misogi.ruby-rubocop"
+  },
+  "ruby.rubocop.configFilePath": ".rubocop.yml",
+  "ruby.rubocop.onSave": true,
+  "ruby.lint": {
+    "rubocop": true
+  },
+  "ruby.rubocop.executePath": "/Users/kazuki.shimamoto/.rbenv/shims/"
 }
