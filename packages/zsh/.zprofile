@@ -35,6 +35,7 @@ fi
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
+typeset -U path PATH
 
 # Set the list of directories that cd searches.
 # cdpath=(
