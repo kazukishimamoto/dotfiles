@@ -70,6 +70,8 @@
 	# grep
 	g = --line-number grep
 	gu = grep --untracked --line-number
+	# tag
+	tags = "!git tag --list 'v2.*' | sort --version-sort --reverse | head"
   # top(最上位ディレクトリに移動する)がほしい
 	top = "!git branch"
 [init]
