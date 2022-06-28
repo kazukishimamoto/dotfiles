@@ -24,7 +24,6 @@
 	r = reset --soft HEAD
 	# rs= "!git ol | fzf --preview='echo {} | awk '\''{print \$1}'\'' | xargs git diff --color' | awk '\''{print $1}'\'' | xargs git reset"
 	rs = "!git ol | fzf | awk '{print $1}' | xargs git reset"
-
 	# stash
 	s = stash
 	su = stash -u
