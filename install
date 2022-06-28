@@ -62,6 +62,9 @@ ln -s ~/dotfiles/packages/git/.gitconfig ~/.gitconfig
 ln -s ~/dotfiles/packages/git/.gitignore_global ~/.gitignore_global
 ln -s ~/dotfiles/packages/git/.git_template ~/.git_template
 
+# nvim
+ln -s ~/dotfiles/packages/nvim/.config/nvim/init.vim ~/.config/nvim/init.vim
+
 # prezto
 ln -s ~/dotfiles/packages/zprezto/.zpreztorc ~/.zpreztorc
 
