@@ -36,6 +36,7 @@
 	ap = add -p
 	# fetch
 	fp = fetch --prune
+	update = "!git fetch && git sw -d origin/master"
 	# branch
 	b = branch
 	ba = branch --all

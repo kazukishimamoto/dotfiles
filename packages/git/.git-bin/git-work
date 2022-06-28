@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+(( $# == 1 )) || exit
+topic="$1"
+
+git branch --show-current | IFS=/ read branch_type feature
+[[ $branch_type == 'develop' ]] || exit
+
+git pull
+git switch -c "work/$feature/$topic"

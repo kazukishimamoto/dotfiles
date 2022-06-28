@@ -1,0 +1,31 @@
+#!/bin/zsh
+echo 'Updating...'
+git update > /dev/null 2>&1
+
+echo '## Recent commits'
+git -P ol --max-count=10
+commit=$(git -P ol --max-count=10 | yank)
+
+# read "commit?Which commit? (default: HEAD) > " < /dev/tty
+
+echo ''
+echo '## Recent versioning tags'
+git tags
+git tags | yank
+
+echo ''
+while [[ $tagname == "" ]]; do
+  read "tagname?Tagname? > " < /dev/tty
+done
+
+git tag -s "${tagname}" "${commit:-HEAD}"
+
+echo ''
+git -P show --stat ${tagname}
+read "answer?Ready to push? (y/n) > " < /dev/tty
+if [[ $answer == y ]]; then
+  git push origin "${tagname}"
+else
+  echo 'The tag was not pushed.'
+  echo "(use \"git tag -d ${tagname}\" to delete the local existing tag)"
+fi
