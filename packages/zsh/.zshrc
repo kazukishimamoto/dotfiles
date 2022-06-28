@@ -12,14 +12,6 @@ fi
 
 # Starship
 eval "$(starship init zsh)"
-# nodenv
-eval "$(nodenv init -)"
-# goenv
-eval "$(goenv init -)"
-# direnv
-eval "$(direnv hook zsh)"
-# rbenv
-eval "$(rbenv init -)"
 # z setting
 source /usr/local/etc/profile.d/z.sh # (≒. /usr/local/etc/profile.d/z.sh)
 

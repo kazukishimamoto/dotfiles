@@ -48,8 +48,10 @@ path=(
   $path
 )
 
-# Bin path
-export PATH="$HOME/Workspace/bin:$PATH"
+# local bin path
+export PATH="$HOME/.local/bin:$PATH"
+# git script path
+export PATH="$HOME/.git-bin:$PATH"
 
 # yarn global path
 export PATH="$(yarn global bin):$PATH"
@@ -60,6 +62,13 @@ export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 export GOPATH=$HOME/go
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
+
+# rbenv
+eval "$(rbenv init - zsh)"
+# nodenv
+eval "$(nodenv init -)"
+# direnv
+eval "$(direnv hook zsh)"
 
 #
 # Less
