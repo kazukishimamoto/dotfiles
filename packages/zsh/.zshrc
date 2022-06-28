@@ -13,7 +13,7 @@ fi
 # Starship
 eval "$(starship init zsh)"
 # z setting
-source /usr/local/etc/profile.d/z.sh # (≒. /usr/local/etc/profile.d/z.sh)
+. /opt/homebrew/etc/profile.d/z.sh
 
 # alias
 ## global
