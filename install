@@ -12,6 +12,9 @@ if [ ! -d ~/.zprezto ]; then
   git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
   setopt EXTENDED_GLOB
+  # for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+  #  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+  # done
 fi
 
 echo "Clone dotfiles ..."
@@ -54,11 +57,27 @@ for file in ~/.zshrc ~/.gitconfig; do
 done
 
 # シンボリックリンクを作成する
-stow -v -d ~/dotfiles/packages -t "${VSCODE_SETTING_DIR}" vscode
-stow -v -d ~/dotfiles/packages -t ~ zsh starship tmux git prezto
+# git
+ln -s ~/dotfiles/packages/git/.gitconfig ~/.gitconfig
+ln -s ~/dotfiles/packages/git/.gitignore_global ~/.gitignore_global
+ln -s ~/dotfiles/packages/git/.git_template ~/.git_template
 
-# install extention
-cat ~/dotfiles/extensions | while read line
-do
-  code --install-extension $line
-done
+# prezto
+ln -s ~/dotfiles/packages/zprezto/.zpreztorc ~/.zpreztorc
+
+# starship
+ln -s ~/dotfiles/packages/starship/.config/starship.toml ~/.config/starship.toml
+
+# tmux
+ln -s ~/dotfiles/packages/tmux/.tmux.conf ~/.tmux.conf
+
+# vscode
+ln -s ~/dotfiles/packages/vscode/keybindings.json $VSCODE_SETTING_DIR/keybindings.json
+ln -s ~/dotfiles/packages/vscode/settings.json $VSCODE_SETTING_DIR/settings.json
+
+# zsh
+ln -s ~/dotfiles/packages/zsh/.zshrc ~/.zshrc
+ln -s ~/dotfiles/packages/zsh/.zprofile ~/.zprofile
+ln -s ~/dotfiles/packages/zsh/.zshenv ~/.zshenv
+ln -s ~/dotfiles/packages/zsh/.zlogin ~/.zlogin
+ln -s ~/dotfiles/packages/zsh/.zlogout ~/.zlogout
