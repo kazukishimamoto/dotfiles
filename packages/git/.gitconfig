@@ -52,7 +52,7 @@
 	c = commit
 	cm = commit -m
 	# ca = commit --amend
-	ca = commit -am
+	ca = commit --amend
 	# log
 	l = log
 	ol = log --oneline
@@ -60,9 +60,9 @@
 	sw = switch
 	nb = switch -c
 	ch = "!git branch | tr -d ' ' | fzf --preview 'git show --color {}' | xargs git switch"
+	dev = develop
 	# restore
 	discard = restore --patch
-	# discard all = restore .
 	unstaged = restore --staged --patch
 	rsa = restore .
 	usa = restore --staged .
@@ -74,7 +74,7 @@
 	# tag
 	tags = "!git tag --list 'v2.*' | sort --version-sort --reverse | head"
   # top(最上位ディレクトリに移動する)がほしい
-	top = "!git branch"
+	top = "!git rev-parse --show-toplevel"
 [init]
 	defaultBranch = main
 	templatedir = ~/.git_template
