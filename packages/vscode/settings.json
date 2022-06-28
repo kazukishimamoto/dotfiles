@@ -32,7 +32,7 @@
       "strings": true
     }
   },
-  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+  "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -67,5 +67,6 @@
   "ruby.lint": {
     "rubocop": true
   },
-  "ruby.rubocop.executePath": "/Users/kazuki.shimamoto/.rbenv/shims/"
+  "ruby.rubocop.executePath": "/Users/kazuki.shimamoto/.rbenv/shims/",
+  "solargraph.commandPath": "/Users/kazuki.shimamoto/.rbenv/shims/solargraph"
 }
