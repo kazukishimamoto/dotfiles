@@ -40,3 +40,5 @@ brew "heroku/brew/heroku"
 cask "font-hack-nerd-font"
 cask "clipy"
 cask "rectangle"
+cask "google-japanese-ime"
+# 環境設定 → 一般 → 「キー設定」に入力文字列なし:ctrl-c:キャンセル後IMEを無効化を追加
