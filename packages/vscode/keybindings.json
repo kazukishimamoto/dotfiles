@@ -92,5 +92,10 @@
     "command": "extension.runLineOnRspec",
     "key": "cmd+l",
     "when": "editorLangId == 'ruby'"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "-vscode-neovim.ctrl-a-insert",
+    "when": "editorTextFocus && neovim.ctrlKeysInsert && !neovim.recording && neovim.mode == 'insert'"
   }
 ]
