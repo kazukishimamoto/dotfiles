@@ -29,16 +29,17 @@
   // ## window分割
   // ### 現在のEditorを右のEditorGroupに移動
   {
-    "key": "ctrl+g l",
+    "key": "ctrl+g d",
     "command": "workbench.action.moveEditorToRightGroup",
     "when": "editorTextFocus"
   },
-   // ### 現在のEditorを左のEditorGroupに移動
+  // ### 現在のEditorを左のEditorGroupに移動
   {
     "key": "ctrl+g h",
     "command": "workbench.action.moveEditorToLeftGroup",
     "when": "editorTextFocus"
-  }, // ### 現在のファイルの相対パスをコピー
+  },
+  // ### 現在のファイルの相対パスをコピー
   {
     "key": "ctrl+g c",
     "command": "copyRelativeFilePath",
