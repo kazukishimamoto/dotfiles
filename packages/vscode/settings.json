@@ -69,5 +69,6 @@
   },
   "ruby.rubocop.executePath": "/Users/kazuki.shimamoto/.rbenv/shims/",
   "solargraph.commandPath": "/Users/kazuki.shimamoto/.rbenv/shims/solargraph",
-  "vscode-neovim.neovimInitVimPaths.darwin": "/Users/kazuki.shimamoto/.config/nvim/init.vim"
+  "vscode-neovim.neovimInitVimPaths.darwin": "/Users/kazuki.shimamoto/.config/nvim/init.vim",
+  "git.autofetch": true
 }
