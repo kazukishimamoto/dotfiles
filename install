@@ -43,39 +43,28 @@ if [ ! -d ~/.config ]; then
   mkdir ~/.config
 fi
 
-# シンボリックリンクを作成するファイルは事前に削除する必要がある
-## remove vscode settings
-for file in settings.json keybindings.json; do
-  rm -rf "${VSCODE_SETTING_DIR}/${file}"
-done
-
-## remove dotfiles
-for file in ~/.zshrc ~/.gitconfig; do
-  rm -rf "${file}"
-done
-
 # シンボリックリンクを作成する
 # git
-ln -s ~/dotfiles/packages/git/.gitconfig ~/.gitconfig
-ln -s ~/dotfiles/packages/git/.gitignore_global ~/.gitignore_global
-ln -s ~/dotfiles/packages/git/.git_template ~/.git_template
+ln -sf ~/dotfiles/packages/git/.gitconfig ~/.gitconfig
+ln -sf ~/dotfiles/packages/git/.gitignore_global ~/.gitignore_global
+ln -sf ~/dotfiles/packages/git/.git_template ~/.git_template
+ln -sf ~/dotfiles/packages/git/.git-bin ~/.git-bin
 
 # nvim
-ln -s ~/dotfiles/packages/nvim/.config/nvim/init.vim ~/.config/nvim/init.vim
+ln -sf ~/dotfiles/packages/nvim/.config/nvim/init.vim ~/.config/nvim/init.vim
 
 # prezto
-ln -s ~/dotfiles/packages/zprezto/.zpreztorc ~/.zpreztorc
+ln -sf ~/dotfiles/packages/zprezto/.zpreztorc ~/.zpreztorc
 
 # starship
-ln -s ~/dotfiles/packages/starship/.config/starship.toml ~/.config/starship.toml
+ln -sf ~/dotfiles/packages/starship/.config/starship.toml ~/.config/starship.toml
 
 # tmux
-ln -s ~/dotfiles/packages/tmux/.tmux.conf ~/.tmux.conf
-
+ln -sf ~/dotfiles/packages/tmux/.tmux.conf ~/.tmux.conf
 
 # zsh
-ln -s ~/dotfiles/packages/zsh/.zshrc ~/.zshrc
-ln -s ~/dotfiles/packages/zsh/.zprofile ~/.zprofile
-ln -s ~/dotfiles/packages/zsh/.zshenv ~/.zshenv
-ln -s ~/dotfiles/packages/zsh/.zlogin ~/.zlogin
-ln -s ~/dotfiles/packages/zsh/.zlogout ~/.zlogout
+ln -sf ~/dotfiles/packages/zsh/.zshrc ~/.zshrc
+ln -sf ~/dotfiles/packages/zsh/.zprofile ~/.zprofile
+ln -sf ~/dotfiles/packages/zsh/.zshenv ~/.zshenv
+ln -sf ~/dotfiles/packages/zsh/.zlogin ~/.zlogin
+ln -sf ~/dotfiles/packages/zsh/.zlogout ~/.zlogout
