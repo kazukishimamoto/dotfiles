@@ -14,6 +14,7 @@
   ui = auto
 [pull]
 	rebase = true
+	ff = only
 [alias]
 	pl = pull
 	ps = push
@@ -82,3 +83,5 @@
 	program = /opt/homebrew/bin/gpg
 [commit]
 	gpgsign = true
+[merge]
+	ff = false
