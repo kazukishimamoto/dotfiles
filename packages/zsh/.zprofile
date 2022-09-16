@@ -34,6 +34,13 @@ fi
 #
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# rbenv
+eval "$(rbenv init - zsh)"
+# nodenv
+eval "$(nodenv init -)"
+# direnv
+eval "$(direnv hook zsh)"
+
 #
 # Paths
 #
@@ -67,13 +74,6 @@ export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 export GOPATH=$HOME/go
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
-
-# rbenv
-eval "$(rbenv init - zsh)"
-# nodenv
-eval "$(nodenv init -)"
-# direnv
-eval "$(direnv hook zsh)"
 
 #
 # Less
