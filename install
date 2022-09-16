@@ -2,8 +2,6 @@
 
 set -e
 
-VSCODE_SETTING_DIR=~/Library/Application\ Support/Code/User
-
 echo "Start setup ..."
 cd $HOME
 
@@ -74,9 +72,6 @@ ln -s ~/dotfiles/packages/starship/.config/starship.toml ~/.config/starship.toml
 # tmux
 ln -s ~/dotfiles/packages/tmux/.tmux.conf ~/.tmux.conf
 
-# vscode
-ln -s ~/dotfiles/packages/vscode/keybindings.json $VSCODE_SETTING_DIR/keybindings.json
-ln -s ~/dotfiles/packages/vscode/settings.json $VSCODE_SETTING_DIR/settings.json
 
 # zsh
 ln -s ~/dotfiles/packages/zsh/.zshrc ~/.zshrc

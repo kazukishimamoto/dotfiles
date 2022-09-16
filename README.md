@@ -15,7 +15,6 @@ curl -o - https://raw.githubusercontent.com/kazukishimamoto/dotfiles/main/instal
 ├── Brewfile
 ├── Brewfile.lock.json
 ├── README.md
-├── extensions
 ├── install
 └── packages
     ├── git
@@ -26,9 +25,6 @@ curl -o - https://raw.githubusercontent.com/kazukishimamoto/dotfiles/main/instal
     │       └── starship.toml
     ├── tmux
     │   └── .tmux.conf
-    ├── vscode
-    │   ├── keybindings.json
-    │   └── settings.json
     └── zsh
         └── .zshrc
 ```
