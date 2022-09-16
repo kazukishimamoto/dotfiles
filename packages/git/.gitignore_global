@@ -15,3 +15,6 @@ docker-compose.override.yml
 logfile
 
 *.http
+
+# リポジトリに含めない個人的なファイル
+.local
