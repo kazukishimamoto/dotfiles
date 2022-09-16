@@ -3,7 +3,7 @@
 set -e
 
 echo "Start setup ..."
-cd $HOME
+cd "$HOME"
 
 echo "Install prezto ..."
 if [ ! -d ~/.zprezto ]; then
