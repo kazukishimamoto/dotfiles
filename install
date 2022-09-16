@@ -17,7 +17,7 @@ fi
 
 echo "Clone dotfiles ..."
 if [ ! -d ~/dotfiles ]; then
-  git clone git@github.com:kazukishimamoto/dotfiles.git
+  git clone https://github.com/kazukishimamoto/dotfiles.git
 fi
 
 echo "Install Homebrew ..."
