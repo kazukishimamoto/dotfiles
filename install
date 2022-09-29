@@ -5,16 +5,6 @@ set -e
 echo "Start setup ..."
 cd "$HOME"
 
-echo "Install prezto ..."
-if [ ! -d ~/.zprezto ]; then
-  git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-
-  setopt EXTENDED_GLOB
-  # for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-  #  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-  # done
-fi
-
 echo "Clone dotfiles ..."
 if [ ! -d ~/dotfiles ]; then
   git clone https://github.com/kazukishimamoto/dotfiles.git
@@ -52,9 +42,6 @@ ln -sf ~/dotfiles/packages/git/.git-bin ~/.git-bin
 
 # nvim
 ln -sf ~/dotfiles/packages/nvim/.config/nvim/init.vim ~/.config/nvim/init.vim
-
-# prezto
-ln -sf ~/dotfiles/packages/zprezto/.zpreztorc ~/.zpreztorc
 
 # starship
 ln -sf ~/dotfiles/packages/starship/.config/starship.toml ~/.config/starship.toml
