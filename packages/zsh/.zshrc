@@ -148,12 +148,12 @@ fkill() {
   fi
 }
 
-function select_history() {
-  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
-  CURSOR=$#BUFFER
-}
-zle -N select_history
-bindkey '^r' select_history
+# function select_history() {
+#   BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+#   CURSOR=$#BUFFER
+# }
+# zle -N select_history
+# bindkey '^r' select_history
 
 ## git func
 select_commit_from_git_log() {
@@ -302,3 +302,14 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
+
+zinit light zdharma/fast-syntax-highlighting
+
+zinit light zsh-users/zsh-autosuggestions
+
+zinit light zsh-users/zsh-completions
+
+zinit light zdharma/history-search-multi-word
+
+# ↑のどこかで別のkeybindが設定されてしまうので上書きする
+bindkey '^K' kill-line
