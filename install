@@ -51,7 +51,3 @@ ln -sf ~/dotfiles/packages/tmux/.tmux.conf ~/.tmux.conf
 
 # zsh
 ln -sf ~/dotfiles/packages/zsh/.zshrc ~/.zshrc
-ln -sf ~/dotfiles/packages/zsh/.zprofile ~/.zprofile
-ln -sf ~/dotfiles/packages/zsh/.zshenv ~/.zshenv
-ln -sf ~/dotfiles/packages/zsh/.zlogin ~/.zlogin
-ln -sf ~/dotfiles/packages/zsh/.zlogout ~/.zlogout
