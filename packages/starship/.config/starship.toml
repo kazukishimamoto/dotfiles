@@ -37,9 +37,9 @@ disabled = true
 [custom.k8s-cluster]
 command = "basename $(kubectl config current-context)"
 format = " on ☸[$output/](bold blue)"
-when = """ test "$K8S_STATUS" = "true" """
+when = ""
 
 [custom.k8s-namespace]
 command = 'kubectl config view -o "jsonpath={.contexts[?(@.name==\"$(kubectl config current-context)\")].context.namespace}"'
 format = "[$output](bold yellow) "
-when = """ test "$K8S_STATUS" = "true" """
+when = ""
