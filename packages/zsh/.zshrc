@@ -71,9 +71,9 @@ alias dk="docker"
 alias dkv="docker volume"
 alias dkn="docker network"
 alias dka="docker attach"
-alias dkc="docker-compose"
+alias dkc="docker compose"
 alias dkm="docker-machine"
-alias dkce="docker-compose exec"
+alias dkce="docker compose exec"
 
 ## git
 ### basic
@@ -120,7 +120,7 @@ alias fdh="firebase deploy --only hosting"
 
 ## tmb
 alias tmb="dkce teachme_web"
-dct() { docker-compose $1 teachme_web "${@:2}" }
+dct() { docker compose $1 teachme_web "${@:2}" }
 
 # functions
 ## utils
