@@ -43,7 +43,7 @@
 	ba = branch --all
 	bd = "!git branch | tr -d ' ' | fzf --preview 'git show --color {}' | xargs git branch -D"
 	# merge済みでmainブランチ以外のブランチを削除する
-	vacuum = "!f () { git checkout $1; git branch --merged|egrep -v '\\*|main'|xargs git branch -d; git fetch --prune; };f"
+	vacuum = "!f () { git checkout $1; git branch --merged|egrep -v '\\*|main|master|release'|xargs git branch -d; git fetch --prune; };f"
 	# diff
 	d = diff
 	db = "!git diff --name-only --diff-filter=d | xargs bat --diff"
@@ -85,3 +85,5 @@
 	gpgsign = true
 [merge]
 	ff = false
+[rebase]
+	autostash = true
