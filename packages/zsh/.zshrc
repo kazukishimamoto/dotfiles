@@ -269,6 +269,9 @@ export PATH="$(yarn global bin):$PATH"
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 
+# npm: node v18.12.0
+export PATH=$PATH:`npm prefix --location=global`/bin
+
 # go path
 export GOPATH=$HOME/go
 export GOENV_ROOT="$HOME/.goenv"
