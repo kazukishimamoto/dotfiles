@@ -55,7 +55,7 @@ alias -g X='| xargs'
 alias -g F='| fzf'
 
 ## utils
-alias ls="exa"
+alias ls="eza"
 alias ll="ls -l -g --icons"
 alias la="ll -a"
 alias cat="bat"
