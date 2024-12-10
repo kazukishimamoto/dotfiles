@@ -13,7 +13,7 @@
   grep = auto
   ui = auto
 [pull]
-	rebase = true
+	# pull時に不要なマージコミットを作らない
 	ff = only
 [alias]
 	pl = pull
