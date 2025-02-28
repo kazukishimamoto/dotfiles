@@ -1,8 +1,8 @@
 # direnv
 .envrc
 
-# nodenv
-.node-version
+# nvm
+.nvmrc
 
 # ruby
 .ruby-version

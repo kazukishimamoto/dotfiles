@@ -235,8 +235,6 @@ fi
 
 # rbenv
 eval "$(rbenv init - zsh)"
-# nodenv
-eval "$(nodenv init -)"
 # direnv
 eval "$(direnv hook zsh)"
 
@@ -311,3 +309,7 @@ zinit light zdharma/history-search-multi-word
 
 # ↑のどこかで別のkeybindが設定されてしまうので上書きする
 bindkey '^K' kill-line
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
