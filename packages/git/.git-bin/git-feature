@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+(( $# == 1 )) || exit
+feature="$1"
+
+git switch -c "feature/$feature"

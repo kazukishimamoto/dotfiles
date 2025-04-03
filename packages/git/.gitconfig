@@ -62,6 +62,7 @@
 	nb = switch -c
 	ch = "!git branch | tr -d ' ' | fzf --preview 'git show --color {}' | xargs git switch"
 	dev = develop
+	ft = feature
 	# restore
 	discard = restore --patch
 	unstaged = restore --staged --patch
