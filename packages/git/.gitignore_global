@@ -21,3 +21,5 @@ logfile
 
 # IntelliJ
 .idea
+
+mcp.json
