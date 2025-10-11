@@ -35,19 +35,14 @@ fi
 
 # シンボリックリンクを作成する
 # git
-ln -sf ~/dotfiles/packages/git/.gitconfig ~/.gitconfig
-ln -sf ~/dotfiles/packages/git/.gitignore_global ~/.gitignore_global
-ln -sf ~/dotfiles/packages/git/.git_template ~/.git_template
-ln -sf ~/dotfiles/packages/git/.git-bin ~/.git-bin
-
-# nvim
-ln -sf ~/dotfiles/packages/nvim/.config/nvim/init.vim ~/.config/nvim/init.vim
+ln -sf ~/Workspace/dotfiles/packages/git/.gitconfig ~/.gitconfig
+ln -sf ~/Workspace/dotfiles/packages/git/.gitignore_global ~/.gitignore_global
+ln -sf ~/Workspace/dotfiles/packages/git/.git_template ~/.git_template
+ln -sf ~/Workspace/dotfiles/packages/git/.git-bin ~/.git-bin
 
 # starship
-ln -sf ~/dotfiles/packages/starship/.config/starship.toml ~/.config/starship.toml
-
-# tmux
-ln -sf ~/dotfiles/packages/tmux/.tmux.conf ~/.tmux.conf
+ln -sf ~/Workspace/dotfiles/packages/starship/.config/starship.toml ~/.config/starship.toml
 
 # zsh
-ln -sf ~/dotfiles/packages/zsh/.zshrc ~/.zshrc
+ln -sf ~/Workspace/dotfiles/packages/zsh/.zshrc ~/.zshrc
+ln -s ~/Workspace/dotfiles/packages/zsh/.zshrc.d ~/.zshrc.d
