@@ -9,7 +9,6 @@
 
 # docker-compose
 docker-compose.override.yml
-*.tmb
 
 *.log
 logfile
