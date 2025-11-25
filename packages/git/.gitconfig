@@ -5,6 +5,8 @@
 	name = Kazuki Shimamoto
 	email = jakky0529@gmail.com
 	signingkey = 03BDB5CE8D27FC8793BF43FFA8273BD38F3666E5
+[gpg]
+	program = /opt/homebrew/bin/gpg
 [color]
   status = auto
   diff = auto
