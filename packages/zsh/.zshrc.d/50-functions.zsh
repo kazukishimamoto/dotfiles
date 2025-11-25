@@ -1,5 +1,4 @@
 # ~/.zshrc.d/50-functions.zsh
-print -P "%F{green}[zshrc] loaded 50-functions.zsh%f"
 
 select_commit_from_git_log() {
   git log -n1000 --graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |\

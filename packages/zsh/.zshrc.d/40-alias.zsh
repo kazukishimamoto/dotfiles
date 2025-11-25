@@ -1,5 +1,4 @@
 # ~/.zshrc.d/40-alias.zsh
-print -P "%F{green}[zshrc] loaded 40-alias.zsh%f"
 
 ## utils
 alias ls="eza"

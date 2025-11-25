@@ -1,5 +1,3 @@
-print -P "%F{green}[zshrc] loaded 20-completion.zsh%f"
-
 # ~/.zshrc.d/20-completion.zsh
 
 # zsh の保管システムをロード & 初期化

@@ -1,5 +1,3 @@
-print -P "%F{green}[zshrc] loaded 10-history.zsh%f"
-
 # ~/.zshrc.d/10-history.zsh
 
 HISTFILE=$HOME/.zsh-history # 履歴を保存するファイル

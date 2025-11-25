@@ -1,5 +1,4 @@
 # ~/.zshrc.d/60-tools.zsh
-print -P "%F{green}[zshrc] loaded 60-tools.zsh%f"
 
 # Starship
 eval "$(starship init zsh)"

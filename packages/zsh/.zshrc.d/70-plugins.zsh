@@ -1,5 +1,4 @@
 # ~/.zshrc.d/70-plugins.zsh
-print -P "%F{green}[zshrc] loaded 70-plugins.zsh%f"
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
