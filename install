@@ -44,5 +44,6 @@ ln -sf ~/Workspace/dotfiles/packages/git/.git-bin ~/.git-bin
 ln -sf ~/Workspace/dotfiles/packages/starship/.config/starship.toml ~/.config/starship.toml
 
 # zsh
+ln -sf ~/Workspace/dotfiles/packages/zsh/.zshenv ~/.zshenv
 ln -sf ~/Workspace/dotfiles/packages/zsh/.zshrc ~/.zshrc
 ln -s ~/Workspace/dotfiles/packages/zsh/.zshrc.d ~/.zshrc.d
