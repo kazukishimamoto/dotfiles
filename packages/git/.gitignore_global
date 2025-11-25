@@ -22,3 +22,7 @@ logfile
 .idea
 
 mcp.json
+
+# claude code
+CLAUDE.md
+.claude
