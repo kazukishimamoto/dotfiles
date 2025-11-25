@@ -18,10 +18,4 @@ if [[ -d "$ZSHRC_DIR" ]]; then
   for f in "$ZSHRC_DIR"/[0-9][0-9]-*.zsh(.N); do
     source "$f"
   done
-
-  # 5) マシン固有や実験中の設定（Gitに入れない）
-  [[ -f "$ZSHRC_DIR/99-local.zsh" ]] && source "$ZSHRC_DIR/99-local.zsh"
-  for f in "$ZSHRC_DIR"/local/*.zsh(.N); do
-    source "$f"
-  done
 fi
