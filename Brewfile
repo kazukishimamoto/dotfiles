@@ -6,10 +6,10 @@ brew 'direnv'
 brew 'eza'
 brew 'fzf'
 brew 'gh'
-brew 'nvm'
 brew 'starship'
 brew 'tmux'
 brew 'z'
+brew 'fnm'
 # brew 'reattach-to-user-namespace'
 
 # font
