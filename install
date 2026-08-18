@@ -39,6 +39,8 @@ ln -sf ~/Workspace/dotfiles/packages/git/.gitconfig ~/.gitconfig
 ln -sf ~/Workspace/dotfiles/packages/git/.gitignore_global ~/.gitignore_global
 ln -sf ~/Workspace/dotfiles/packages/git/.git_template ~/.git_template
 ln -sf ~/Workspace/dotfiles/packages/git/.git-bin ~/.git-bin
+# gitconfig-local は PC 毎に commit 署名用の signingkey を書くためのファイル
+cp ~/Workspace/dotfiles/packages/git/.gitconfig-local ~/.gitconfig-local
 
 # starship
 ln -sf ~/Workspace/dotfiles/packages/starship/.config/starship.toml ~/.config/starship.toml
