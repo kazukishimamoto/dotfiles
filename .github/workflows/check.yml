@@ -51,11 +51,23 @@ jobs:
                 ng=1
               fi
             done
-            if alias ll > /dev/null 2>&1; then
-              echo "  OK   ll のエイリアスが定義されている"
-            else
-              echo "  NG   ll のエイリアスが定義されていない"
-              ng=1
-            fi
+            chk() {
+              if eval "$2"; then
+                echo "  OK   $1"
+              else
+                echo "  NG   $1"
+                ng=1
+              fi
+            }
+            chk "ll のエイリアスが定義されている"   "alias ll > /dev/null 2>&1"
+            chk "gtop が呼び出し時に評価される"     "alias gtop | grep -q rev-parse"
+            chk "補完が初期化されている"           "(( ${+_comps} )) && (( ${#_comps} > 100 ))"
+            chk "fzf の Ctrl-T が使える"           "bindkey | grep -q \"\\^T.*fzf\""
+            chk "fzf の Alt-C が使える"            "bindkey | grep -qi fzf-cd"
+            chk "Ctrl-R が割り当てられている"      "bindkey | grep -q \"\\^R\""
+            chk "Ctrl-K が kill-line"              "bindkey | grep -q \"\\^K.*kill-line\""
+            chk "履歴の共有が有効"                 "[[ -o share_history ]]"
+            chk "VISUAL に --wait が付いている"    "[[ \$VISUAL == *--wait* ]]"
+            echo "  補完定義の数: ${#_comps}"
             exit $ng
           ' < /dev/null

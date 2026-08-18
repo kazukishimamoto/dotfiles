@@ -14,10 +14,23 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
-zinit light zdharma/fast-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
+# 補完定義を追加するプラグインは compinit より先に読み込む
 zinit light zsh-users/zsh-completions
-zinit light zdharma/history-search-multi-word
+zinit light zsh-users/zsh-autosuggestions
+
+# 補完システムの初期化。
+# 1 日 1 回だけ完全な検査を行い、それ以外はキャッシュを使って起動を速くする。
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
+zinit cdreplay -q   # プラグインが登録した compdef を反映する
+
+# シンタックスハイライトは他のウィジェット定義より後に読み込む必要がある
+zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light zdharma-continuum/history-search-multi-word
 
 # ↑のどこかで別のkeybindが設定されてしまうので上書きする
 bindkey '^K' kill-line

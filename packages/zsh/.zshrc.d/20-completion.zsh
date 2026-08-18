@@ -1,7 +1,8 @@
 # ~/.zshrc.d/20-completion.zsh
 
-# zsh の保管システムをロード & 初期化
-autoload -Uz compinit && compinit -C
+# 補完の初期化（compinit）はここでは行わない。
+# zinit で読み込む zsh-completions の補完定義を拾えるようにするため、
+# プラグインを読み込んだ後の 70-plugins.zsh で実行している。
 
 # 補完の設定
 ## 補完候補をそのまま探す -> 小文字を大文字に変えて探す -> 大文字を小文字に変えて探す
