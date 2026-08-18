@@ -1,0 +1,81 @@
+#!/bin/sh
+#
+# install を、本番のホームディレクトリを汚さずに確認するスクリプト
+#
+# 空のフォルダをホームディレクトリに見立てて install を実行し、
+# 結果を報告する。本番の $HOME には一切触らない。
+#
+set -eu
+
+DOTFILES=$(cd "$(dirname "$0")" && pwd)
+SANDBOX=${SANDBOX:-/tmp/dotfiles-test}
+ng=0
+
+echo "1. 空のホームディレクトリを用意します: $SANDBOX"
+rm -rf "$SANDBOX"
+mkdir -p "$SANDBOX"
+echo
+
+echo "2. install を実行します"
+TARGET="$SANDBOX" DOTFILES="$DOTFILES" sh "$DOTFILES/install"
+echo
+
+echo "3. 作られたリンクを確認します"
+find "$SANDBOX" -maxdepth 3 -type l | sort | while read -r l; do
+  if [ -e "$l" ]; then
+    echo "   OK    ${l#"$SANDBOX"/} -> $(readlink "$l")"
+  else
+    echo "   壊れ  ${l#"$SANDBOX"/} -> $(readlink "$l")"
+  fi
+done
+broken=$(find "$SANDBOX" -maxdepth 3 -type l ! -exec test -e {} \; -print | wc -l | tr -d ' ')
+if [ "$broken" = "0" ]; then
+  echo "   => 壊れたリンクはありません"
+else
+  echo "   => 壊れたリンクが ${broken} 個あります"
+  ng=$((ng + broken))
+fi
+echo
+
+echo "4. もう一度実行しても壊れないか確認します"
+printf '[user]\n  signingkey = DUMMYKEY\n' > "$SANDBOX/.gitconfig-local"
+TARGET="$SANDBOX" DOTFILES="$DOTFILES" sh "$DOTFILES/install" > /dev/null
+
+if grep -q DUMMYKEY "$SANDBOX/.gitconfig-local"; then
+  echo "   OK    .gitconfig-local の署名鍵は上書きされずに残りました"
+else
+  echo "   NG    .gitconfig-local の署名鍵が消えました"
+  ng=$((ng + 1))
+fi
+
+# ディレクトリへのリンクに ln -sfn を使っていないと、
+# リンク先ディレクトリの中に入れ子のリンクが作られてしまう
+for d in .zshrc.d .git_template .git-bin; do
+  if [ -e "$SANDBOX/$d/$d" ]; then
+    echo "   NG    $d の中に入れ子のリンクが作られました"
+    echo "         リポジトリ内に $DOTFILES/**/$d/$d が残っていないか確認してください"
+    ng=$((ng + 1))
+  else
+    echo "   OK    $d に入れ子のリンクはありません"
+  fi
+done
+echo
+
+if [ "$ng" = "0" ]; then
+  echo "すべて問題ありませんでした。"
+else
+  echo "${ng} 件の問題が見つかりました。"
+fi
+
+cat << MSG
+
+実際にこの環境のシェルに入って確かめるには:
+    env HOME=$SANDBOX zsh -l
+プロンプトが出るか、ll や g st が動くか、エラーが出ていないかを触って確認できます。
+終わったら exit で抜けてください。
+
+片付けるには:
+    rm -rf $SANDBOX
+MSG
+
+exit "$ng"

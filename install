@@ -1,54 +1,57 @@
 #!/bin/sh
+#
+# 設定ファイルをホームディレクトリに配置する
+#
+# Homebrew の導入と brew bundle は行わない（README の手順を参照）。
+# このスクリプトの責務を「配置」だけに絞ることで、TARGET を一時フォルダに
+# 差し替えれば本番環境を汚さずに動作確認できる。
+#   例: TARGET=/tmp/dotfiles-test sh install
+#
+set -eu
 
-set -e
+DOTFILES="${DOTFILES:-$HOME/dev/dotfiles}"
+TARGET="${TARGET:-$HOME}"
 
-echo "Start setup ..."
-cd "$HOME"
+echo "設定ファイルを配置します"
+echo "  リポジトリ: $DOTFILES"
+echo "  配置先:     $TARGET"
+echo
 
-echo "Clone dotfiles ..."
-if [ ! -d ~/dotfiles ]; then
-  git clone https://github.com/kazukishimamoto/dotfiles.git
+link() {
+  src="$DOTFILES/packages/$1"
+  dst="$TARGET/$2"
+
+  if [ ! -e "$src" ]; then
+    echo "ERROR: リンク元が存在しません: $src" >&2
+    return 1
+  fi
+
+  mkdir -p "$(dirname "$dst")"
+  # -n が無いと、対象がディレクトリへのリンクだった場合に
+  # そのディレクトリの中に入れ子でリンクが作られてしまう
+  ln -sfn "$src" "$dst"
+  echo "  配置: $dst"
+}
+
+# パッケージを増やしたらここに 1 行足す
+link git/.gitconfig                  .gitconfig
+link git/.gitignore_global           .gitignore_global
+link git/.git_template               .git_template
+link git/.git-bin                    .git-bin
+link starship/.config/starship.toml  .config/starship.toml
+link tmux/.tmux.conf                 .tmux.conf
+link zsh/.zshenv                     .zshenv
+link zsh/.zshrc                      .zshrc
+link zsh/.zshrc.d                    .zshrc.d
+
+# .gitconfig-local は PC 毎に commit 署名用の signingkey を書くファイル。
+# 既にあるものを上書きすると署名が壊れるので、絶対に触らない。
+if [ -f "$TARGET/.gitconfig-local" ]; then
+  echo "  保護: .gitconfig-local は既に存在するため触りません"
+else
+  cp "$DOTFILES/packages/git/.gitconfig-local" "$TARGET/.gitconfig-local"
+  echo "  作成: .gitconfig-local （GPG の signingkey を書き込んでください）"
 fi
 
-echo "Install Homebrew ..."
-if [ ! -f /usr/local/bin/brew ]; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
-
-echo "Run brew doctor ..."
-which brew >/dev/null 2>&1 && brew doctor
-
-echo "Run brew update ..."
-brew update
-
-echo "Ok. run brew upgrade ..."
-brew upgrade
-
-echo "Install Command for Brewfile ..."
-brew bundle -v --file=~/dotfiles/Brewfile
-
-brew cleanup
-
-if [ ! -d ~/.config ]; then
-  mkdir ~/.config
-fi
-
-# シンボリックリンクを作成する
-# git
-ln -sf ~/Workspace/dotfiles/packages/git/.gitconfig ~/.gitconfig
-ln -sf ~/Workspace/dotfiles/packages/git/.gitignore_global ~/.gitignore_global
-ln -sf ~/Workspace/dotfiles/packages/git/.git_template ~/.git_template
-ln -sf ~/Workspace/dotfiles/packages/git/.git-bin ~/.git-bin
-# gitconfig-local は PC 毎に commit 署名用の signingkey を書くためのファイル
-cp ~/Workspace/dotfiles/packages/git/.gitconfig-local ~/.gitconfig-local
-
-# starship
-ln -sf ~/Workspace/dotfiles/packages/starship/.config/starship.toml ~/.config/starship.toml
-
-# tmux
-ln -sf ~/Workspace/dotfiles/packages/tmux/.tmux.conf ~/.tmux.conf
-
-# zsh
-ln -sf ~/Workspace/dotfiles/packages/zsh/.zshenv ~/.zshenv
-ln -sf ~/Workspace/dotfiles/packages/zsh/.zshrc ~/.zshrc
-ln -sf ~/Workspace/dotfiles/packages/zsh/.zshrc.d ~/.zshrc.d
+echo
+echo "完了しました。新しいシェルを開くか、exec zsh -l を実行してください。"

@@ -1,0 +1,61 @@
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  # install は設定ファイルを配置するだけなので、Homebrew も macOS も要らない。
+  # 数十秒で終わるため、毎 push でここが落ちれば早い段階で気づける。
+  links:
+    name: 設定ファイルの配置を確認する
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: サンドボックスで install を実行する
+        run: ./test-install
+
+  # macOS ランナーは毎回まっさらな Mac なので、
+  # 「新しい Mac を買ったときに README の手順どおりで動くか」をここで確認する。
+  # 自分の Mac から Homebrew を消して試す代わりになる。
+  fresh-mac:
+    name: まっさらな Mac で通しで確認する
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: サンドボックスで install を実行する
+        run: ./test-install
+
+      - name: Brewfile のツールを入れる（README の手順 3）
+        run: brew bundle --file=Brewfile
+
+      - name: Brewfile に書いたものが全部入ったか確認する
+        run: brew bundle check --file=Brewfile
+
+      - name: 設定ファイルを配置する（README の手順 4）
+        run: DOTFILES="$PWD" ./install
+
+      - name: 新しいシェルが起動して主要コマンドが使えるか確認する
+        run: |
+          zsh -l -i -c '
+            ng=0
+            for c in starship eza bat fzf gh direnv fnm tmux; do
+              if command -v "$c" > /dev/null; then
+                echo "  OK   $c"
+              else
+                echo "  NG   $c が見つかりません"
+                ng=1
+              fi
+            done
+            if alias ll > /dev/null 2>&1; then
+              echo "  OK   ll のエイリアスが定義されている"
+            else
+              echo "  NG   ll のエイリアスが定義されていない"
+              ng=1
+            fi
+            exit $ng
+          ' < /dev/null

@@ -6,6 +6,8 @@ brew 'direnv'
 brew 'eza'
 brew 'fzf'
 brew 'gh'
+# GPG署名（commit.gpgsign = true のため無いとコミットできない）
+brew 'gnupg'
 brew 'starship'
 brew 'tmux'
 brew 'z'
@@ -15,3 +17,13 @@ brew 'fnm'
 # font
 cask 'font-fira-code-nerd-font'
 cask 'font-hack-nerd-font'
+
+# app
+# ターミナル
+cask 'ghostty'
+# Docker Desktop の代替
+cask 'orbstack'
+# エディタ
+cask 'zed'
+
+# VS Code の拡張はここでは管理しない（VS Code の設定同期に任せる。README を参照）
