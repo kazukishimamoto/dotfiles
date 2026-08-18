@@ -1,6 +1,6 @@
 [core]
 	editor = vim -c \"set fenc=utf-8\"
-	excludesfile = /Users/kazuki.shimamoto/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [user]
 	name = Kazuki Shimamoto
 	email = jakky0529@gmail.com
@@ -41,7 +41,8 @@
 	ap = add -p
 	# fetch
 	fp = fetch --prune
-	update = "!git fetch && git sw -d origin/master"
+	# 既定ブランチ（main / master）の最新状態に detach で移動する。git-release が使う
+	update = "!f() { git fetch; for b in main master; do git rev-parse --verify -q origin/$b >/dev/null && { git switch -d origin/$b; return; }; done; echo 'origin/main も origin/master も見つかりません' >&2; return 1; }; f"
 	# branch
 	b = branch
 	ba = branch --all
@@ -75,7 +76,7 @@
 	# merge
 	m = merge
 	# grep
-	g = --line-number grep
+	g = grep --line-number
 	gu = grep --untracked --line-number
 	# tag
 	tags = "!git tag --list 'v2.*' | sort --version-sort --reverse | head"
