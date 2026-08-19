@@ -41,7 +41,7 @@ link git/.gitconfig                  .gitconfig
 link git/.gitignore_global           .gitignore_global
 link git/.git-bin                    .git-bin
 link starship/.config/starship.toml  .config/starship.toml
-link tmux/.tmux.conf                 .tmux.conf
+link herdr/.config/herdr/config.toml .config/herdr/config.toml
 link zsh/.zshenv                     .zshenv
 link zsh/.zshrc                      .zshrc
 link zsh/.zshrc.d                    .zshrc.d

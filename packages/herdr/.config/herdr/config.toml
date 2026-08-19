@@ -1,0 +1,10 @@
+# herdr の設定（配置先: ~/.config/herdr/config.toml）
+#
+# 既定値のままでよいものは書かない。
+# 設定できる項目の全量は `herdr --default-config`、検証は `herdr config check`。
+
+[ui]
+agent_panel_sort = "spaces"
+
+[keys]
+prefix = "ctrl+g"

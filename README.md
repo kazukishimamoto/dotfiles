@@ -129,7 +129,7 @@ packages/
   git/                .gitconfig, .gitignore_global, git のサブコマンド（.git-bin/）
   nvim/               neovim の設定（現在 install の配置対象外）
   starship/           プロンプトの設定
-  tmux/               tmux の設定
+  herdr/              herdr（ターミナルマルチプレクサ）の設定
   zsh/                .zshenv, .zshrc, .zshrc.d/ 以下のモジュール
 ```
 

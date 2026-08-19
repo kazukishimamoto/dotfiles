@@ -43,6 +43,16 @@ jobs:
       - name: Brewfile に書いたものが全部入ったか確認する
         run: brew bundle check --file=Brewfile
 
+      # herdr config check は問題があっても終了コード 0 を返すため、出力を見て判定する
+      - name: herdr の設定を herdr 自身に検証させる
+        run: |
+          out=$(HERDR_CONFIG_PATH="$PWD/packages/herdr/.config/herdr/config.toml" herdr config check 2>&1)
+          echo "$out"
+          case "$out" in
+            *"config: ok"*) echo "  OK   herdr の設定は妥当" ;;
+            *) echo "  NG   herdr の設定に問題があります"; exit 1 ;;
+          esac
+
       - name: 設定ファイルを配置する（README の手順 4）
         run: DOTFILES="$PWD" ./install
 
@@ -50,7 +60,7 @@ jobs:
         run: |
           zsh -l -i -c '
             ng=0
-            for c in starship eza bat fzf gh direnv fnm tmux; do
+            for c in starship eza bat fzf gh direnv fnm herdr; do
               if command -v "$c" > /dev/null; then
                 echo "  OK   $c"
               else

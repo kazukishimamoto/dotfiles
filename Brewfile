@@ -9,7 +9,8 @@ brew 'gh'
 # GPG署名（commit.gpgsign = true のため無いとコミットできない）
 brew 'gnupg'
 brew 'starship'
-brew 'tmux'
+# ターミナルマルチプレクサ（tmux から乗り換え）
+brew 'herdr'
 brew 'z'
 brew 'fnm'
 # brew 'reattach-to-user-namespace'
