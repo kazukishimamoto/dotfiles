@@ -23,15 +23,10 @@
 	pl = pull
 	ps = push
 	psu = push -u origin HEAD
-	rv = revert
-	rb = rebase
 	st = status --short --branch
 	# reset
-	r = reset --soft HEAD
-	# rs= "!git ol | fzf --preview='echo {} | awk '\''{print \$1}'\'' | xargs git diff --color' | awk '\''{print $1}'\'' | xargs git reset"
 	rs = "!git ol | fzf | awk '{print $1}' | xargs git reset"
 	# stash
-	s = stash
 	su = stash -u
 	sp = stash pop
 	sl = stash list
@@ -47,41 +42,33 @@
 	b = branch
 	ba = branch --all
 	bd = "!git branch | tr -d ' ' | fzf --preview 'git show --color {}' | xargs git branch -D"
-	# merge済みでmainブランチ以外のブランチを削除する
-	vacuum = "!f () { git checkout $1; git branch --merged|egrep -v '\\*|main|master|release'|xargs git branch -d; git fetch --prune; };f"
+	# マージ済みのブランチを一覧から選んで削除するのは .git-bin/git-vacuum（git vacuum）
 	# diff
 	d = diff
-	db = "!git diff --name-only --diff-filter=d | xargs bat --diff"
-	# ds = diff --stat
 	ds = diff --staged
 	# commit
 	c = commit
 	cm = commit -m
-	# ca = commit --amend
 	ca = commit --amend
 	# log
 	l = log
 	ol = log --oneline
 	# switch
-	sw = switch
 	nb = switch -c
 	ch = "!git branch | tr -d ' ' | fzf --preview 'git show --color {}' | xargs git switch"
 	dev = develop
 	ft = feature
 	# restore
-	discard = restore --patch
-	unstaged = restore --staged --patch
-	rsa = restore .
-	usa = restore --staged .
-	# merge
-	m = merge
+	# add の aa / ap と同じ規則にしてある。a = 全部、p = 対話的に選ぶ
+	# 作業ツリーの変更を捨てる
+	ra = restore .
+	rp = restore --patch
+	# ステージした変更を下ろす（unstage）
+	ua = restore --staged .
+	up = restore --staged --patch
 	# grep
 	g = grep --line-number
 	gu = grep --untracked --line-number
-	# tag
-	tags = "!git tag --list 'v2.*' | sort --version-sort --reverse | head"
-  # top(最上位ディレクトリに移動する)がほしい
-	top = "!git rev-parse --show-toplevel"
 [init]
 	defaultBranch = main
 [commit]

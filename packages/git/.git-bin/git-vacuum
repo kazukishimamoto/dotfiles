@@ -1,0 +1,94 @@
+#!/bin/zsh
+#
+# 不要になったローカルブランチを一覧から選んで削除する。
+#
+# `git branch --merged` だけでは GitHub の Squash and merge で取り込まれたブランチを
+# 検出できない（コミットが作り直されるため履歴上の祖先にならない）。
+# そこで次の 3 つを材料にして候補に印を付け、実際に消すものは自分で選ぶ。
+#
+#   [PR]     マージ済み PR の head ブランチ（gh から取得。squash マージでも確実）
+#   [merged] 履歴上マージ済み（git branch --merged）
+#   [gone]   upstream が消えている（GitHub のマージ時自動削除など）
+#
+# 使い方:
+#   git vacuum          一覧から Tab で複数選択して削除
+#   git vacuum --list   候補を表示するだけ（削除しない）
+
+set -u
+
+protected=(main master develop release)
+
+if ! command -v fzf > /dev/null 2>&1; then
+  echo "fzf が必要です" >&2
+  exit 1
+fi
+
+list_only=0
+[[ ${1:-} == "--list" ]] && list_only=1
+
+echo "リモートの状態を取得しています..." >&2
+git fetch --prune --quiet || true
+
+current=$(git branch --show-current)
+
+typeset -A pr_merged merged_local gone_upstream
+
+# マージ済み PR の head ブランチ名
+if command -v gh > /dev/null 2>&1; then
+  while IFS= read -r b; do
+    [[ -n $b ]] && pr_merged[$b]=1
+  done < <(gh pr list --state merged --limit 200 --json headRefName --jq '.[].headRefName' 2>/dev/null)
+fi
+
+# 履歴上マージ済みのブランチ（整形は git に任せる。自前で空白を剥がすと壊れやすい）
+while IFS= read -r b; do
+  [[ -n $b ]] && merged_local[$b]=1
+done < <(git for-each-ref --merged HEAD --format='%(refname:short)' refs/heads)
+
+# upstream が消えたブランチ
+while IFS= read -r line; do
+  [[ $line == *"[gone]"* ]] && gone_upstream[${line%% *}]=1
+done < <(git for-each-ref --format='%(refname:short) %(upstream:track)' refs/heads)
+
+candidates=()
+for b in ${(f)"$(git branch --format='%(refname:short)')"}; do
+  [[ $b == $current ]] && continue
+  (( ${protected[(I)$b]} )) && continue
+
+  marks=()
+  if (( ${+pr_merged[$b]} )); then marks+=PR; fi
+  if (( ${+merged_local[$b]} )); then marks+=merged; fi
+  if (( ${+gone_upstream[$b]} )); then marks+=gone; fi
+  (( ${#marks} == 0 )) && continue
+
+  candidates+=("${b}"$'\t'"[${(j:,:)marks}]")
+done
+
+if (( ${#candidates} == 0 )); then
+  echo "削除候補のブランチはありません。"
+  exit 0
+fi
+
+if (( list_only )); then
+  print -l -- $candidates
+  exit 0
+fi
+
+selected=$(print -l -- $candidates | fzf --multi \
+  --header='Tab で複数選択 / Enter で削除 / Esc で中止' \
+  --preview 'git log --oneline --graph --max-count=20 {1}' | awk '{print $1}')
+
+if [[ -z $selected ]]; then
+  echo "何も選択されなかったので終了します。"
+  exit 0
+fi
+
+print -r -- "$selected" | while IFS= read -r b; do
+  [[ -z $b ]] && continue
+  if git branch -d "$b" 2> /dev/null; then
+    echo "  削除: $b"
+  else
+    echo "  $b は履歴上マージされていないため -D で削除します"
+    git branch -D "$b"
+  fi
+done

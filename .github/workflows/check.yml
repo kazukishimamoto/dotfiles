@@ -77,7 +77,6 @@ jobs:
               fi
             }
             chk "ll のエイリアスが定義されている"   "alias ll > /dev/null 2>&1"
-            chk "gtop が呼び出し時に評価される"     "alias gtop | grep -q rev-parse"
             chk "補完が初期化されている"           "(( ${+_comps} )) && (( ${#_comps} > 100 ))"
             chk "fzf の Ctrl-T が使える"           "bindkey | grep -q \"\\^T.*fzf\""
             chk "fzf の Alt-C が使える"            "bindkey | grep -qi fzf-cd"
