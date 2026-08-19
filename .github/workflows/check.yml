@@ -5,6 +5,9 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  schedule:
+    # 毎月 1 日 00:00 UTC（日本時間 9:00）。まっさらな Mac で通るかを定期的に確かめる
+    - cron: '0 0 1 * *'
 
 jobs:
   # install は設定ファイルを配置するだけなので、Homebrew も macOS も要らない。
@@ -21,8 +24,12 @@ jobs:
   # macOS ランナーは毎回まっさらな Mac なので、
   # 「新しい Mac を買ったときに README の手順どおりで動くか」をここで確認する。
   # 自分の Mac から Homebrew を消して試す代わりになる。
+  #
+  # 毎 push で知りたい情報ではないうえ、macOS ランナーは待たされることがあるため、
+  # 手動実行（gh workflow run check.yml）と月 1 回の定期実行に限定する。
   fresh-mac:
     name: まっさらな Mac で通しで確認する
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4

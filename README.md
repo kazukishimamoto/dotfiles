@@ -140,7 +140,15 @@ packages/
 
 `.github/workflows/check.yml` で以下を確認している。
 
-- **links** (Ubuntu) — `test-install` を実行する。数十秒で終わる。
-- **fresh-mac** (macOS) — 毎回まっさらな macOS 上で、上記の手順 3〜4 を実際に流し、
-  新しいシェルが起動して主要コマンドが使えるところまで確認する。
+- **links** (Ubuntu) — 毎 push。`test-install` を実行する。5 秒ほどで終わる。
+- **fresh-mac** (macOS) — **手動実行と月 1 回の定期実行のみ**。毎回まっさらな macOS 上で
+  上記の手順 3〜4 を実際に流し、新しいシェルが起動して主要コマンドが使えるところまで確認する。
   新しい Mac でセットアップが通るかを、手元の環境を壊さずに確かめられる。
+
+`fresh-mac` を毎 push で回さないのは、知りたいのが「新しい Mac で再現できるか」であって
+日常の変更ごとに必要な情報ではないため。macOS ランナーは混雑時に長く待たされることもある。
+新しい Mac を買う前や Brewfile / zsh 設定を大きく変えたときは、手動で回す。
+
+```sh
+gh workflow run check.yml
+```
