@@ -1,18 +1,21 @@
-# direnv
+# 全リポジトリで無視するファイル。
+#
+# ここに書いてよいのは「どのプロジェクトでも自分だけが持つファイル」に限る。
+# チームで共有すべきファイル（.ruby-version, .nvmrc, CLAUDE.md など）をここに書くと、
+# コミットすべきリポジトリで git add しても入らず、事故に気づけなくなる。
+# プロジェクト固有の除外は、そのリポジトリの .gitignore か .git/info/exclude に書く。
+
+# direnv（秘密情報を書くことが多いので、誤ってコミットしないよう無視する）
 .envrc
 
-# nvm
-.nvmrc
-
-# ruby
-.ruby-version
-
-# docker-compose
+# docker-compose のローカル上書き
 docker-compose.override.yml
 
+# ログ
 *.log
 logfile
 
+# REST Client のスクラッチファイル
 *.http
 
 # リポジトリに含めない個人的なファイル
@@ -21,8 +24,5 @@ logfile
 # IntelliJ
 .idea
 
+# MCP のローカル設定
 mcp.json
-
-# claude code
-CLAUDE.md
-.claude
