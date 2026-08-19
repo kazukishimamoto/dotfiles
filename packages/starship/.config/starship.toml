@@ -1,4 +1,4 @@
-# プロンプトの先頭に改行を表示しません
+# プロンプトの前に空行を入れて、コマンドの区切りを見やすくする
 add_newline = true
 command_timeout = 1000
 
@@ -25,7 +25,7 @@ renamed = "👅"
 deleted = "🗑"
 
 [nodejs]
-format = "via [🤖 $version](bold green) ${custom.foo}"
+format = "via [🤖 $version](bold green) "
 
 [aws]
 format = "on [$symbol$profile]($style) "
@@ -34,12 +34,14 @@ style = "bold blue"
 [gcloud]
 disabled = true
 
+# kubectl 関連はプロンプトを描画するたびに外部コマンドを実行するため、
+# kubeconfig がある環境でだけ動くようにして、通常のプロンプトを遅くしないようにする
 [custom.k8s-cluster]
 command = "basename $(kubectl config current-context)"
 format = " on ☸[$output/](bold blue)"
-when = ""
+when = 'test -f "$HOME/.kube/config"'
 
 [custom.k8s-namespace]
 command = 'kubectl config view -o "jsonpath={.contexts[?(@.name==\"$(kubectl config current-context)\")].context.namespace}"'
 format = "[$output](bold yellow) "
-when = ""
+when = 'test -f "$HOME/.kube/config"'
