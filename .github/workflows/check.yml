@@ -67,7 +67,8 @@ jobs:
             chk "Ctrl-R が割り当てられている"      "bindkey | grep -q \"\\^R\""
             chk "Ctrl-K が kill-line"              "bindkey | grep -q \"\\^K.*kill-line\""
             chk "履歴の共有が有効"                 "[[ -o share_history ]]"
-            chk "VISUAL に --wait が付いている"    "[[ \$VISUAL == *--wait* ]]"
+            # VS Code が無い環境では VISUAL=vim になるのが正しい挙動なので、条件分岐そのものを確認する
+            chk "VISUAL が正しく設定されている"    "if (( \$+commands[code] )); then [[ \$VISUAL == *--wait* ]]; else [[ -n \$VISUAL ]]; fi"
             echo "  補完定義の数: ${#_comps}"
             exit $ng
           ' < /dev/null
