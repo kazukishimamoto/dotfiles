@@ -100,7 +100,7 @@ Brewfile              brew bundle で入れるツールの一覧
 install               設定ファイルを配置する（これだけが本体）
 test-install          install を安全に確認するスクリプト
 packages/
-  git/                .gitconfig, .gitignore_global, git のサブコマンド, git テンプレート
+  git/                .gitconfig, .gitignore_global, git のサブコマンド（.git-bin/）
   nvim/               neovim の設定（現在 install の配置対象外）
   starship/           プロンプトの設定
   tmux/               tmux の設定

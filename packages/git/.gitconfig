@@ -84,7 +84,6 @@
 	top = "!git rev-parse --show-toplevel"
 [init]
 	defaultBranch = main
-	templatedir = ~/.git_template
 [commit]
 	gpgsign = true
 [merge]

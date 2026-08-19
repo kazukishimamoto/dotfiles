@@ -1,0 +1,4 @@
+# Claude Code のローカル状態。
+# チームで共有したい設定を置くときは .claude/settings.json を追跡する。
+.claude/.cc-writes/
+.claude/settings.local.json
