@@ -36,7 +36,7 @@
 	ap = add -p
 	# fetch
 	fp = fetch --prune
-	# 既定ブランチ（main / master）の最新状態に detach で移動する。git-release が使う
+	# 既定ブランチ（main / master）の最新状態に detach で移動する
 	update = "!f() { git fetch; for b in main master; do git rev-parse --verify -q origin/$b >/dev/null && { git switch -d origin/$b; return; }; done; echo 'origin/main も origin/master も見つかりません' >&2; return 1; }; f"
 	# branch
 	b = branch
