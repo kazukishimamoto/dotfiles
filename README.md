@@ -131,6 +131,7 @@ packages/
   starship/           プロンプトの設定
   herdr/              herdr（ターミナルマルチプレクサ）の設定
   zsh/                .zshenv, .zshrc, .zshrc.d/ 以下のモジュール
+                      examples/ は読み込まれない参考用のスニペット置き場
 ```
 
 `packages/zsh/.zshrc.d/` は番号順に読み込まれる。
