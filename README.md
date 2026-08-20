@@ -31,22 +31,22 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 ### 2. このリポジトリを clone する
 
 ```sh
-mkdir -p ~/dev
-git clone https://github.com/kazukishimamoto/dotfiles.git ~/dev/dotfiles
+mkdir -p ~/Workspace/dev
+git clone https://github.com/kazukishimamoto/dotfiles.git ~/Workspace/dev/dotfiles
 ```
 
-`~/dev/dotfiles` 以外に置く場合は、以降のコマンドで `DOTFILES=<置いた場所>` を指定する。
+`~/Workspace/dev/dotfiles` 以外に置く場合は、以降のコマンドで `DOTFILES=<置いた場所>` を指定する。
 
 ### 3. ツールを入れる
 
 ```sh
-brew bundle --file=~/dev/dotfiles/Brewfile
+brew bundle --file=~/Workspace/dev/dotfiles/Brewfile
 ```
 
 ### 4. 設定ファイルを配置する
 
 ```sh
-~/dev/dotfiles/install
+~/Workspace/dev/dotfiles/install
 ```
 
 ホームディレクトリにシンボリックリンクを張るだけのスクリプト。何度実行してもよい。

@@ -12,7 +12,7 @@
 #
 set -eu
 
-DOTFILES="${DOTFILES:-$HOME/dev/dotfiles}"
+DOTFILES="${DOTFILES:-$HOME/Workspace/dev/dotfiles}"
 TARGET="${TARGET:-$HOME}"
 
 echo "設定ファイルを配置します"
