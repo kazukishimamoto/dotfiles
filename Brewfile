@@ -16,6 +16,7 @@ brew 'fnm'
 # brew 'reattach-to-user-namespace'
 
 # font
+# font（VS Code 用。ターミナルは Ghostty 内蔵の JetBrains Mono）
 cask 'font-fira-code-nerd-font'
 cask 'font-hack-nerd-font'
 
