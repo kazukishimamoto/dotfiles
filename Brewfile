@@ -25,7 +25,7 @@ cask 'font-hack-nerd-font'
 cask 'ghostty'
 # Docker Desktop の代替
 cask 'orbstack'
-# 軽量エディタ
+# エディタ
 cask 'zed'
 
 # VS Code の拡張はここでは管理しない（VS Code の設定同期に任せる。README を参照）
