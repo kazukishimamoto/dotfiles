@@ -26,3 +26,5 @@ logfile
 
 # MCP のローカル設定
 mcp.json
+
+**/.claude/.cc-writes/
